@@ -4,312 +4,324 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Second Kickstart — Adventure &amp; Dual-Sport Motorcycle Reviews</title>
-<meta name="description" content="Second Kickstart reviews adventure and dual-sport motorcycles for riders getting back on. Ranked comparisons, model reviews, and practical guides.">
+<meta name="description" content="Bike reviews, ranked comparisons and practical advice for riders getting back on. Adventure and dual-sport motorcycles, reviewed honestly.">
 <link rel="canonical" href="https://secondkickstart.com/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Second Kickstart">
 <meta property="og:title" content="Second Kickstart — Adventure &amp; Dual-Sport Motorcycle Reviews">
-<meta property="og:description" content="Adventure and dual-sport motorcycles, reviewed for riders getting back on.">
+<meta property="og:description" content="Bike reviews, ranked comparisons and practical advice for riders getting back on.">
 <meta property="og:url" content="https://secondkickstart.com/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://secondkickstart.com/img/hero.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<link rel="stylesheet" href="css/site.css">
 
 <style>
-  :root{
-    color-scheme: light;
-    --ground:#EBEDEF;
-    --surface:#FFFFFF;
-    --surface2:#F3F5F6;
-    --ink:#13181C;
-    --muted:#5A646D;
-    --rule:#C9D0D6;
-    --rule-soft:#DDE2E6;
-    --accent:#17497E;
-    --accent-ink:#17497E;
-    --accent-soft:#DCE6F2;
-    --hivis:#B58600;
-    --hivis-bar:#E8B400;
-    --display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
-    --ui:'Barlow','Helvetica Neue',Arial,sans-serif;
-    --body:'Source Serif 4',Georgia,'Times New Roman',serif;
-    --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; background:var(--band); overflow:hidden;
+    display:flex; align-items:flex-end; min-height:clamp(480px,70vh,760px);
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      color-scheme: dark;
-      --ground:#0C1014;
-      --surface:#141A20;
-      --surface2:#1A2229;
-      --ink:#E4E9ED;
-      --muted:#919CA6;
-      --rule:#263039;
-      --rule-soft:#1E262D;
-      --accent:#79AEE6;
-      --accent-ink:#8FBCEC;
-      --accent-soft:#12283F;
-      --hivis:#F2C63D;
-      --hivis-bar:#E8B400;
+  /* Directional scrim: lightens the left so the headline reads, leaves the
+     right-hand subject saturated. Far less flattening than a flat wash. */
+  .hero::after{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      linear-gradient(to right, rgba(248,249,250,.92) 0%, rgba(248,249,250,.72) 32%, rgba(248,249,250,.12) 62%, rgba(248,249,250,0) 80%),
+      linear-gradient(to top, rgba(244,245,247,.82) 0%, rgba(244,245,247,.25) 28%, rgba(244,245,247,0) 55%);
+  }
+  @media (max-width:760px){
+    /* no room to dodge the subject on a phone — fall back to a bottom-weighted wash */
+    .hero::after{
+      background:linear-gradient(to top, rgba(244,245,247,.95) 20%, rgba(244,245,247,.72) 52%, rgba(244,245,247,.2) 82%);
     }
   }
-
-  *{box-sizing:border-box}
-  html,body{margin:0}
-  body{
-    background:var(--ground);
-    color:var(--ink);
-    font-family:var(--body);
-    font-size:17px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    padding-inline:20px;
-    padding-block:0;
+  .herotext{position:relative; z-index:2; width:100%; padding-block:clamp(90px,16vw,190px) clamp(34px,5vw,64px)}
+  .hero-eyebrow{
+    font-family:var(--ui); font-size:11px; font-weight:700; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--accent-deep); margin-bottom:14px;
   }
-  .wrap{max-width:900px; margin:0 auto; padding-block:0 64px}
-
-  h1,h2,h3{margin:0; text-wrap:balance}
-  a{color:var(--accent-ink)}
-  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
-
-  .kicker{
-    font-family:var(--mono); font-size:11px; letter-spacing:.16em;
-    text-transform:uppercase; color:var(--muted);
+  .hero h1{
+    font-family:var(--disp); font-weight:700; text-transform:uppercase;
+    font-size:clamp(38px,6.6vw,84px); line-height:.94; max-width:15ch; margin-bottom:18px;
   }
+  .hero-sub{
+    font-family:var(--ui); font-size:clamp(15px,1.7vw,19px); font-weight:500;
+    line-height:1.45; max-width:44ch; margin-bottom:26px;
+  }
+  .hero-cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+  .btn2{
+    font-family:var(--ui); font-size:14px; font-weight:600; text-decoration:none;
+    padding:12px 20px; border:1.5px solid currentColor; border-radius:2px; white-space:nowrap;
+  }
+  .dots{display:flex; gap:7px; margin-top:26px}
+  .dots i{width:30px; height:3px; background:currentColor; opacity:.25; display:block}
+  .dots i:first-child{opacity:.9; background:var(--hivis)}
+  .carnote{font-family:var(--ui); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:9px}
 
-  /* ---------- masthead ---------- */
-  .masthead{padding-block:52px 26px}
-  .hivis-rule{height:5px; background:var(--hivis-bar); width:64px; margin-bottom:22px}
-  h1{
-    font-family:var(--display); font-weight:700;
-    font-size:clamp(46px,12vw,104px); line-height:.9;
-    letter-spacing:.005em; text-transform:uppercase;
-    margin-bottom:16px;
-  }
-  .tagline{
-    font-family:var(--ui); font-weight:500;
-    font-size:clamp(17px,2.6vw,21px); line-height:1.35;
-    color:var(--ink); max-width:34ch; margin:0;
-  }
-  .masthead-foot{
-    display:flex; gap:10px 24px; flex-wrap:wrap; align-items:center;
-    margin-top:26px; padding-top:18px; border-top:2px solid var(--ink);
-  }
-  .masthead-foot .kicker{color:var(--ink)}
-  .masthead-foot .sep{color:var(--rule)}
-
-  /* ---------- layout ---------- */
-  .cols{display:grid; grid-template-columns:1fr; gap:36px; margin-top:44px}
-  @media (min-width:800px){
-    .cols{grid-template-columns:1.55fr 1fr; gap:52px; align-items:start}
+  /* ---------- why the name ---------- */
+  .why{background:var(--band); padding-block:clamp(56px,7vw,92px)}
+  .whygrid{display:grid; gap:clamp(28px,4vw,56px); align-items:center}
+  @media (min-width:860px){ .whygrid{grid-template-columns:0.85fr 1.15fr} }
+  .why .ph, .why .shot{aspect-ratio:4/5}
+  .why h2{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(30px,4.4vw,52px); line-height:1; margin-bottom:22px}
+  .why p{font-size:clamp(16px,1.7vw,18.5px); max-width:56ch}
+  .why .pull{
+    font-family:var(--ui); font-weight:600; font-size:clamp(16.5px,1.9vw,20px);
+    line-height:1.45; color:var(--accent); border-left:4px solid var(--hivis);
+    padding-left:18px; margin-top:26px; max-width:46ch;
   }
 
-  section + section{margin-top:40px}
-  h2{
-    font-family:var(--ui); font-weight:600; font-size:13px;
-    letter-spacing:.13em; text-transform:uppercase; color:var(--muted);
-    padding-bottom:7px; border-bottom:1px solid var(--rule); margin-bottom:16px;
+  /* ---------- video cards ---------- */
+  .vids{display:grid; gap:clamp(20px,2.6vw,34px)}
+  @media (min-width:760px){ .vids{grid-template-columns:1fr 1fr} }
+  .vid .ph, .vid .shot{aspect-ratio:16/9; margin-bottom:16px}
+  .vid-top{display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-bottom:8px}
+  .vid h3{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(22px,2.5vw,29px); line-height:1.02}
+  .pill{
+    font-family:var(--ui); font-size:10px; font-weight:700; letter-spacing:.12em;
+    text-transform:uppercase; color:#7A5C06; background:#FBEFC4;
+    border:1px solid #E6CE78; padding:4px 9px; border-radius:99px; white-space:nowrap;
   }
-  p{margin:0 0 15px}
-  p:last-child{margin-bottom:0}
-  .lede{font-size:19px; line-height:1.55}
-
-  /* ---------- production slate ---------- */
-  .slate{display:grid; gap:2px; background:var(--rule-soft); border:1px solid var(--rule-soft)}
-  .ep{background:var(--surface); padding:18px 20px}
-  .ep-top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:7px}
-  .ep h3{
-    font-family:var(--display); font-weight:700; text-transform:uppercase;
-    font-size:26px; line-height:1.05; letter-spacing:.01em;
-  }
-  .status{
-    font-family:var(--mono); font-size:10px; letter-spacing:.11em; text-transform:uppercase;
-    color:var(--hivis); border:1px solid var(--hivis); border-radius:99px;
-    padding:3px 9px; white-space:nowrap;
-  }
-  .ep p{font-size:15.5px; color:var(--muted); margin:0}
-  .marques{
-    font-family:var(--mono); font-size:11.5px; line-height:1.9; color:var(--muted);
-    margin-top:10px; overflow-wrap:anywhere;
+  .vid p{font-size:15.5px; color:var(--muted)}
+  .marq{
+    font-family:var(--ui); font-size:12px; font-weight:500; color:var(--muted);
+    margin-top:12px; padding-top:12px; border-top:1px solid var(--rule); line-height:1.8;
   }
 
-  /* ---------- press box ---------- */
-  .press{
-    background:var(--surface); border:1px solid var(--rule);
-    border-top:5px solid var(--accent); padding:22px;
+  /* ---------- stories ---------- */
+  .stories{background:var(--band)}
+  .storygrid{display:grid; gap:clamp(20px,2.6vw,32px); align-items:stretch}
+  @media (min-width:820px){ .storygrid{grid-template-columns:1.4fr 1fr} }
+  .story{background:var(--white); border:1px solid var(--rule); display:flex; flex-direction:column; text-decoration:none}
+  .story .ph, .story .shot{aspect-ratio:16/10}
+  .story-body{padding:22px 24px 26px}
+  .story h3{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(21px,2.3vw,27px); line-height:1.05; margin-bottom:9px}
+  .story .meta{font-family:var(--ui); font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:11px}
+  .story p{font-size:15.5px; color:var(--muted)}
+  .story .more{font-family:var(--ui); font-size:13.5px; font-weight:700; color:var(--accent); margin-top:16px; display:inline-block}
+  a.story:hover{border-color:var(--ink)}
+  a.story:hover .more{text-decoration:underline}
+  .story.soon{align-items:center; justify-content:center; text-align:center; padding:40px 26px; border-style:dashed}
+  .story.soon p{font-family:var(--ui); font-size:14.5px; max-width:30ch; margin:0}
+
+  /* ---------- about ---------- */
+  .aboutgrid{display:grid; gap:clamp(28px,4vw,54px); align-items:start}
+  @media (min-width:860px){ .aboutgrid{grid-template-columns:0.8fr 1.2fr} }
+  .aboutgrid .ph, .aboutgrid .shot{aspect-ratio:4/5}
+  .about h2{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(28px,4vw,46px); line-height:1; margin-bottom:8px}
+  .about .role{font-family:var(--ui); font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:22px}
+  .about p{max-width:58ch}
+
+  /* Closing thought — sans against the serif body, under a rule, so it
+     reads as a deliberate aside rather than a font glitch. */
+  .postscript{
+    margin-top:clamp(30px,3.6vw,42px); padding-top:20px;
+    border-top:2px solid var(--ink); max-width:58ch;
   }
-  .press h2{border-bottom-color:var(--rule-soft)}
-  .press dl{margin:0; display:grid; gap:14px}
-  .press dt{
-    font-family:var(--mono); font-size:10px; letter-spacing:.12em;
-    text-transform:uppercase; color:var(--muted); margin-bottom:3px;
+  .postscript p{
+    font-family:var(--ui); font-size:15.5px; font-weight:500;
+    line-height:1.58; color:var(--muted); max-width:none;
   }
-  .press dd{margin:0; font-family:var(--ui); font-size:15px; overflow-wrap:anywhere}
-  .press dd a{font-weight:500}
-  .press .note{
-    margin-top:18px; padding-top:15px; border-top:1px dashed var(--rule);
-    font-size:14.5px; color:var(--muted); line-height:1.55;
+  .postscript a{
+    color:var(--accent); font-weight:700; text-decoration:none;
+    border-bottom:2px solid var(--hivis); padding-bottom:1px; white-space:nowrap;
   }
+  .postscript a:hover{border-bottom-color:var(--accent)}
 
   /* ---------- standards ---------- */
-  .standards{margin-top:52px; padding-top:0}
-  .std-grid{display:grid; grid-template-columns:1fr; gap:24px}
-  @media (min-width:680px){ .std-grid{grid-template-columns:1fr 1fr; gap:28px 44px} }
-  @media (min-width:900px){ .std-grid{grid-template-columns:repeat(4,1fr); gap:32px} }
-  .std h3{
-    font-family:var(--ui); font-weight:600; font-size:16px;
-    margin-bottom:6px; letter-spacing:-.005em;
-  }
-  .std p{font-size:15.5px; color:var(--muted); line-height:1.6}
+  .stds{display:grid; gap:26px 40px}
+  @media (min-width:620px){ .stds{grid-template-columns:1fr 1fr} }
+  @media (min-width:980px){ .stds{grid-template-columns:repeat(4,1fr)} }
+  .std h3{font-family:var(--ui); font-weight:700; font-size:15.5px; margin-bottom:7px; padding-top:12px; border-top:3px solid var(--hivis)}
+  .std p{font-size:14.5px; color:var(--muted); line-height:1.6}
 
-  /* ---------- cta ---------- */
-  .cta{
-    margin-top:52px; background:var(--accent); color:#fff;
-    padding:28px 26px; display:flex; justify-content:space-between;
-    align-items:center; gap:20px 28px; flex-wrap:wrap;
-  }
-  @media (prefers-color-scheme: dark){ .cta{color:#08131F} }
-  .cta-txt h3{
-    font-family:var(--display); font-weight:700; text-transform:uppercase;
-    font-size:30px; line-height:1; margin-bottom:6px;
-  }
-  .cta-txt p{font-family:var(--ui); font-size:15px; opacity:.88; margin:0}
-  .cta a.btn{
-    font-family:var(--ui); font-weight:600; font-size:15px;
-    background:var(--hivis-bar); color:#13181C; text-decoration:none;
-    padding:13px 22px; white-space:nowrap; border:2px solid var(--hivis-bar);
-  }
-  .cta a.btn:hover{background:transparent; color:inherit}
-  .cta a.btn:focus-visible{outline:2px solid #fff; outline-offset:3px}
-
-  footer{
-    margin-top:44px; padding-top:20px; border-top:1px solid var(--rule);
-    display:flex; justify-content:space-between; gap:12px 28px; flex-wrap:wrap;
-    font-family:var(--mono); font-size:11.5px; color:var(--muted);
-  }
-  footer a{color:var(--muted)}
-
-  @media (prefers-reduced-motion: reduce){ *{transition:none!important; animation:none!important} }
+  /* ---------- press ---------- */
+  .pressband{background:var(--night); color:#fff; padding-block:clamp(34px,4.5vw,52px)}
+  .pressgrid{display:grid; gap:24px 44px; align-items:start}
+  @media (min-width:800px){ .pressgrid{grid-template-columns:1fr 1.3fr} }
+  .pressband h2{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(24px,3vw,34px); line-height:1; margin-bottom:10px}
+  .pressband p{font-size:15px; color:#B9C0C8; max-width:52ch}
+  .pressband a.mail{color:var(--hivis); font-family:var(--ui); font-weight:600; text-decoration:none}
+  .pdl{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:18px 28px; margin:0}
+  .pdl dt{font-family:var(--ui); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#8A939D; margin-bottom:4px}
+  .pdl dd{margin:0; font-family:var(--ui); font-size:14.5px; color:#E4E8EC; overflow-wrap:anywhere}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="masthead">
-    <div class="hivis-rule" aria-hidden="true"></div>
-    <h1>Second<br>Kickstart</h1>
-    <p class="tagline">Adventure and dual-sport motorcycles, reviewed for riders getting back on.</p>
-    <div class="masthead-foot">
-      <span class="kicker">Independent · Rider-funded</span>
-      <span class="sep" aria-hidden="true">/</span>
-      <span class="kicker">Video on YouTube</span>
-      <span class="sep" aria-hidden="true">/</span>
-      <span class="kicker">Press: press@secondkickstart.com</span>
+<header class="topbar">
+  <div class="inner">
+    <a class="wordmark" href="/"><span class="logoslot">LOGO</span>Second Kickstart</a>
+    <nav class="nav">
+      <a href="#prod">Reviews</a>
+      <a href="#why">Why the name</a>
+      <a href="#stories">Stories</a>
+      <a href="#about">About</a>
+      <a href="#press">Press</a>
+      <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <img src="img/hero.jpg" alt="A rider standing beside a dual-sport motorcycle on a ridge above a forested river valley." class="shot fill">
+  <div class="herotext">
+    <div class="inner">
+      <p class="hero-eyebrow">Adventure &amp; dual-sport</p>
+      <h1>The second kick is the one that matters</h1>
+      <p class="hero-sub">Bike reviews, ranked comparisons and the practical stuff nobody puts in a brochure &mdash; for riders getting back on.</p>
+      <div class="hero-cta">
+        <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch on YouTube</a>
+        <a class="btn2" href="#prod">See what&rsquo;s coming</a>
+      </div>
+      <!-- Carousel: add one .dots i per slide when videos publish -->
+      <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="carnote">Carousel-ready &mdash; one slide per video once they publish</p>
     </div>
-  </header>
+  </div>
+</section>
 
-  <div class="cols">
-    <main>
-      <section>
-        <h2>About</h2>
-        <p class="lede">Plenty of people learn to ride, stop for twenty years, and then find themselves standing in a dealership wondering what happened to motorcycles. Second Kickstart is for them.</p>
-        <p>The coverage is adventure and dual-sport machines — the bikes that get ridden to the trailhead and then down it. Model reviews, ranked comparisons, and the practical material nobody puts in a brochure: what a bike actually weighs when it is loaded, what breaks, what it costs to keep, and what to pack for a week away from pavement.</p>
-        <p>Reviews are written for the rider who is spending their own money and has to live with the decision.</p>
-      </section>
+<!-- ========== WHY THE NAME ========== -->
+<section class="why" id="why">
+  <div class="inner whygrid">
+    <img src="img/kick-lever.jpg" alt="A boot resting on a motorcycle kickstart lever at sunset." class="shot">
+    <div>
+      <p class="eyebrow">Why Second Kickstart</p>
+      <h2>Nobody panics at the first kick</h2>
+      <p>Every bike I learned on had a kick lever. No button, no fuss. Fold it out, give it your weight, and pray.</p>
+      <p>They almost never caught on the first kick, but nobody panics at the first one. It&rsquo;s the second that tells you what kind of day you&rsquo;re going to have. If it catches, the bike is happy and you&rsquo;re going for a ride. If it doesn&rsquo;t, your heart sinks a little, because now you&rsquo;re a mechanic instead of a rider, and that ride will have to wait.</p>
+      <p class="pull">Second Kickstart has another, more personal meaning for me. My career in high tech ended after 27 years without warning, leaving the world open to possibilities. For me, this channel is about finding that second kickstart, whatever it may be.</p>
+    </div>
+  </div>
+</section>
 
-      <section>
-        <h2>In production</h2>
-        <div class="slate">
-          <article class="ep">
-            <div class="ep-top">
-              <h3>Top 10 Adventure Bikes</h3>
-              <span class="status">In production</span>
-            </div>
-            <p>A ranked comparison of the current adventure lineup, judged on real-world usability rather than spec-sheet superlatives.</p>
-            <p class="marques">BMW · KTM · Honda · Yamaha · Triumph · Ducati · Suzuki · Kawasaki · Husqvarna · Harley-Davidson · Aprilia · Moto Guzzi · Royal Enfield · CFMOTO · Zero</p>
-          </article>
-          <article class="ep">
-            <div class="ep-top">
-              <h3>Top 10 Dual-Sport Bikes</h3>
-              <span class="status">In production</span>
-            </div>
-            <p>Street-legal dirt bikes ranked for riders who want one machine that commutes on Friday and rides singletrack on Saturday.</p>
-            <p class="marques">Honda · Kawasaki · Suzuki · Yamaha · KTM · Husqvarna · GASGAS · Beta · Sherco · SWM · Royal Enfield · CFMOTO</p>
-          </article>
+<!-- ========== IN PRODUCTION ========== -->
+<section class="sec" id="prod">
+  <div class="inner">
+    <div class="sechead">
+      <h2>In production</h2>
+      <span class="note">Two ranked comparisons for the 2027 model year</span>
+    </div>
+    <div class="vids">
+      <article class="vid">
+        <img src="img/thumb-adv.jpg" alt="Top 10 Do-Everything Adventure Bikes 2027 — title card." class="shot">
+        <div class="vid-top"><h3>Top 10 Do-Everything Adventure Bikes 2027</h3><span class="pill">In production</span></div>
+        <p>The current adventure lineup ranked on real-world usability rather than spec-sheet superlatives &mdash; what it weighs loaded, what it costs to keep, what breaks.</p>
+        <p class="marq">BMW · KTM · Honda · Yamaha · Triumph · Ducati · Suzuki · Kawasaki · Husqvarna · Harley-Davidson · Aprilia · Moto Guzzi · Royal Enfield · CFMOTO · Zero</p>
+      </article>
+      <article class="vid">
+        <img src="img/thumb-dual.jpg" alt="The 10 Dual-Sports I'd Actually Buy in 2027 — title card." class="shot">
+        <div class="vid-top"><h3>The 10 Dual-Sports I&rsquo;d Actually Buy in 2027</h3><span class="pill">In production</span></div>
+        <p>Street-legal dirt bikes ranked for riders who want one machine that commutes on Friday and rides singletrack on Saturday.</p>
+        <p class="marq">Honda · Kawasaki · Suzuki · Yamaha · KTM · Husqvarna · GASGAS · Beta · Sherco · SWM · Royal Enfield · CFMOTO</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STORIES ========== -->
+<section class="sec stories" id="stories">
+  <div class="inner">
+    <div class="sechead">
+      <h2>Stories</h2>
+      <span class="note">Longer pieces, published when there&rsquo;s one worth telling</span>
+    </div>
+    <div class="storygrid">
+      <a class="story" href="stories/first-bike.html">
+        <img src="img/brandon-yz100f.jpg" alt="" class="shot">
+        <div class="story-body">
+          <p class="meta">Origin</p>
+          <h3>A hundred dollars of lawn-mowing money</h3>
+          <p>I was twelve, the bike was a Yamaha YZ100F, and I bought it from a kid across town without telling my parents. What should have been the best ride of my life became a long push home, most of it uphill, because nobody had told me what a fuel shutoff valve was.</p>
+          <span class="more">Read the story &rarr;</span>
         </div>
-      </section>
+      </a>
+      <article class="story soon">
+        <p>More as they come. No schedule, no filler &mdash; just the ones worth writing down.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-    </main>
+<!-- ========== ABOUT ========== -->
+<section class="sec about" id="about">
+  <div class="inner aboutgrid">
+    <img src="img/portrait.jpg" alt="Brandon Meredith at a lakeside camp in the Sierra, loaded panniers and a tent behind him." class="shot">
+    <div>
+      <h2>About Brandon</h2>
+      <p class="role">Editor &amp; presenter</p>
 
-    <aside class="press">
+      <p>Second Kickstart runs on three things I was trained to do: take a machine apart, assess what it&rsquo;s worth, and appreciate how it looks. I spent my career in semiconductors, and my training spans engineering, business, and art. So I go after what a spec sheet won&rsquo;t tell you. A bike can be correct on paper and still be joyless to ride, or worse, break down in the middle of nowhere. So I look beyond the numbers. I explore value, reliability, risk, aesthetics, why bikes are designed the way they are, how well they actually work, and most importantly, whether they are fun to ride.</p>
+
+      <p>I also care about how equipment holds up when it leaves the showroom. Will it survive a long day on a real road, in bad weather, far from a dealer? Can I carry it a long way without wishing it were lighter? Those questions matter to me because I&rsquo;ve spent years depending on equipment in places where it genuinely has to work. I know the outdoors from a motorcycle, a mountain bike, skis, hiking boots, and climbing ropes. I&rsquo;ve spent a lot of time in the mountains, and that experience has given me a healthy skepticism about bikes and gear, and what really matters when you&rsquo;re miles from nowhere.</p>
+
+      <p>The Sierra foothills of Northern California are at the end of my driveway. So the bikes I review don&rsquo;t just get evaluated in a garage or on a spec sheet. They get ridden where they&rsquo;re meant to be ridden.</p>
+
+      <aside class="postscript">
+        <p>I&rsquo;ve been riding motorcycles a long time, and know them inside and out. I bought my first dirt bike at 12, with a hundred dollars of lawn mowing money, and one of the first things I did was take it apart. <a href="stories/first-bike.html">Read the story here.</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EDITORIAL STANDARDS ========== -->
+<section class="sec">
+  <div class="inner">
+    <div class="sechead">
+      <h2>Editorial standards</h2>
+      <span class="note">The short version: nothing here is for sale</span>
+    </div>
+    <div class="stds">
+      <div class="std">
+        <h3>Rankings are not for sale</h3>
+        <p>No manufacturer, dealer or advertiser pays for placement. If a bike is supplied, an event hosted or a video sponsored, it&rsquo;s disclosed on screen and in the description.</p>
+      </div>
+      <div class="std">
+        <h3>Assets are credited</h3>
+        <p>Press imagery and footage are used under editorial permission, credited on screen and in the description, never altered or used in advertising.</p>
+      </div>
+      <div class="std">
+        <h3>No implied endorsement</h3>
+        <p>Using a manufacturer&rsquo;s press materials doesn&rsquo;t mean they endorse this channel, its reviews, or where their bikes land in a ranking.</p>
+      </div>
+      <div class="std">
+        <h3>Corrections</h3>
+        <p>Spec errors and factual mistakes get corrected in the description and acknowledged in a pinned comment. Write to the press address and it gets fixed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRESS ========== -->
+<section class="pressband" id="press">
+  <div class="inner pressgrid">
+    <div>
       <h2>Press &amp; media</h2>
-      <dl>
-        <div>
-          <dt>Media inquiries</dt>
-          <dd><a href="mailto:press@secondkickstart.com">press@secondkickstart.com</a></dd>
-        </div>
-        <div>
-          <dt>Editor</dt>
-          <dd>Brandon Meredith</dd>
-        </div>
-        <div>
-          <dt>Outlet type</dt>
-          <dd>Digital / video</dd>
-        </div>
-        <div>
-          <dt>Channel</dt>
-          <dd><a href="https://www.youtube.com/@secondkickstart" rel="noopener">youtube.com/@secondkickstart</a></dd>
-        </div>
-        <div>
-          <dt>Coverage</dt>
-          <dd>Adventure &amp; dual-sport motorcycles — reviews, ranked comparisons, rider guides</dd>
-        </div>
-        <div>
-          <dt>Territory</dt>
-          <dd>United States</dd>
-        </div>
-      </dl>
-      <p class="note">Manufacturer press offices: requests for media-site access and asset permissions come from the address above. Happy to supply anything your accreditation process needs, and to send a finished cut for review before it publishes.</p>
-    </aside>
-  </div>
-
-      <section class="standards">
-    <h2>Editorial standards</h2>
-    <div class="std-grid">
-      <div class="std">
-    <h3>Rankings are not for sale</h3>
-    <p>No manufacturer, dealer, or advertiser pays for placement in a ranking or a favorable review. If a bike is supplied, an event is hosted, or a video is sponsored, that is disclosed on screen and in the description.</p>
-      </div>
-      <div class="std">
-    <h3>Manufacturer assets are credited</h3>
-    <p>Press imagery and footage are used under editorial permission, credited on screen to the manufacturer and again in the video description, and never altered or used in advertising.</p>
-      </div>
-      <div class="std">
-    <h3>No implied endorsement</h3>
-    <p>Using a manufacturer's press materials does not mean that manufacturer endorses this channel, its reviews, or where its bikes land in a ranking.</p>
-      </div>
-      <div class="std">
-    <h3>Corrections</h3>
-    <p>Specification errors and factual mistakes are corrected in the video description and acknowledged in a pinned comment. Write to the press address and it gets fixed.</p>
-      </div>
+      <p>Requests for media-site access and asset permissions come from <a class="mail" href="mailto:press@secondkickstart.com">press@secondkickstart.com</a>. Happy to supply whatever your accreditation process needs, and to send a finished cut for review before it publishes.</p>
     </div>
-  </section>
-
-  <div class="cta">
-    <div class="cta-txt">
-      <h3>Both lists drop soon</h3>
-      <p>Subscribe and the first one shows up in your feed.</p>
-    </div>
-    <a class="btn" href="https://www.youtube.com/@secondkickstart" rel="noopener">Watch on YouTube</a>
+    <dl class="pdl">
+      <div><dt>Media inquiries</dt><dd>press@secondkickstart.com</dd></div>
+      <div><dt>Editor</dt><dd>Brandon Meredith</dd></div>
+      <div><dt>Outlet type</dt><dd>Digital / video</dd></div>
+      <div><dt>Territory</dt><dd>United States</dd></div>
+    </dl>
   </div>
+</section>
 
-  <footer>
+<footer class="foot">
+  <div class="inner">
     <span>&copy; <span id="yr">2026</span> Second Kickstart</span>
-    <span><a href="mailto:press@secondkickstart.com">press@secondkickstart.com</a></span>
-  </footer>
-</div>
+    <span><a href="https://www.youtube.com/@secondkickstart" rel="noopener">youtube.com/@secondkickstart</a></span>
+  </div>
+</footer>
+
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 </body>
 </html>

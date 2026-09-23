@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Second Kickstart — shared base
+   Tokens, reset, typography, top bar, footer, photo placeholders.
+   Page-specific layout lives inline in each page.
+   ========================================================================== */
+
+:root{
+  color-scheme: light;
+  --white:#FFFFFF;
+  --band:#F4F5F7;
+  --ink:#16191D;
+  --muted:#626A74;
+  --rule:#E2E5E9;
+  --accent:#17497E;
+  --accent-deep:#123A66;
+  --hivis:#E8B400;
+  --night:#14181C;
+
+  --disp:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
+  --ui:'Barlow','Helvetica Neue',Arial,sans-serif;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--white); color:var(--ink);
+  font-family:var(--serif); font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0; text-wrap:balance}
+p{margin:0 0 16px}
+p:last-child{margin-bottom:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--hivis); outline-offset:3px}
+img{max-width:100%; display:block}
+
+.inner{max-width:1120px; margin:0 auto; padding-inline:clamp(20px,4vw,52px)}
+.eyebrow{
+  font-family:var(--ui); font-size:11px; font-weight:700; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:12px;
+}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:60;
+  background:var(--white); border-bottom:1px solid var(--rule);
+}
+.topbar .inner{display:flex; align-items:center; gap:12px 28px; min-height:66px; padding-block:10px}
+.wordmark{
+  font-family:var(--disp); font-weight:700; text-transform:uppercase;
+  font-size:23px; line-height:1; letter-spacing:.015em; text-decoration:none;
+  display:flex; align-items:center; gap:10px;
+}
+/* Swap for <img src="/img/logo.svg" alt="" width="30" height="30"> once a logo exists */
+.logoslot{
+  width:30px; height:30px; flex:none; border:1.5px dashed currentColor;
+  opacity:.45; border-radius:3px; display:grid; place-items:center;
+  font-family:var(--ui); font-size:7.5px; font-weight:600; letter-spacing:.06em;
+}
+.nav{display:flex; gap:26px; margin-left:auto; align-items:center}
+.nav a{font-family:var(--ui); font-size:14px; font-weight:500; text-decoration:none; color:var(--muted); white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.ytbtn{
+  font-family:var(--ui); font-size:13.5px; font-weight:700; text-decoration:none;
+  background:var(--accent); color:#fff; padding:10px 17px; white-space:nowrap;
+  display:inline-flex; align-items:center; gap:8px; border-radius:2px;
+}
+.ytbtn:hover{background:var(--accent-deep)}
+.ytbtn svg{width:15px; height:15px; fill:currentColor; flex:none}
+@media (max-width:860px){ .nav a:not(.ytbtn){display:none} }
+
+/* ---------- photo slots ----------
+   Replace a .ph div with: <img src="/img/x.jpg" alt="…" class="shot">   */
+.ph{
+  position:relative; width:100%; overflow:hidden;
+  background:
+    repeating-linear-gradient(135deg, rgba(0,0,0,.028) 0 2px, transparent 2px 11px),
+    linear-gradient(160deg,#DFE3E8 0%,#EEF0F3 45%,#D9DEE4 100%);
+  display:grid; place-items:center;
+}
+.ph::after{
+  content:attr(data-label);
+  font-family:var(--ui); font-size:10.5px; font-weight:600; letter-spacing:.12em;
+  text-transform:uppercase; color:#8A939D; text-align:center; padding:9px 15px;
+  border:1.5px dashed #B6BEC7; background:rgba(255,255,255,.55); line-height:1.7; max-width:90%;
+}
+.ph.fill, .shot.fill{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.ph.fill{place-items:start start; padding:20px}
+.ph.fill::after{max-width:min(92%,640px); text-align:left}
+.shot{object-fit:cover}
+
+/* ---------- section heads ---------- */
+.sec{padding-block:clamp(56px,7vw,88px)}
+.sechead{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:14px 24px; flex-wrap:wrap; margin-bottom:30px;
+  border-top:2px solid var(--ink); padding-top:14px;
+}
+.sechead h2{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(26px,3.6vw,40px); line-height:1}
+.sechead .note{font-family:var(--ui); font-size:13.5px; color:var(--muted)}
+
+/* ---------- footer ---------- */
+.foot{padding-block:30px; border-top:1px solid var(--rule); padding-bottom:calc(30px + env(safe-area-inset-bottom,0px))}
+.foot .inner{display:flex; justify-content:space-between; gap:12px 28px; flex-wrap:wrap; font-family:var(--ui); font-size:13px; color:var(--muted)}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--ink)}
+
+@media (prefers-reduced-motion: reduce){ *{transition:none!important; animation:none!important} }
