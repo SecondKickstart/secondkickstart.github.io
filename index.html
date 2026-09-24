@@ -6,6 +6,9 @@
 <title>Second Kickstart — Adventure &amp; Dual-Sport Motorcycle Reviews</title>
 <meta name="description" content="Bike reviews, ranked comparisons and practical advice for riders getting back on. Adventure and dual-sport motorcycles, reviewed honestly.">
 <link rel="canonical" href="https://secondkickstart.com/">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="img/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Second Kickstart">
@@ -59,10 +62,6 @@
     font-family:var(--ui); font-size:14px; font-weight:600; text-decoration:none;
     padding:12px 20px; border:1.5px solid currentColor; border-radius:2px; white-space:nowrap;
   }
-  .dots{display:flex; gap:7px; margin-top:26px}
-  .dots i{width:30px; height:3px; background:currentColor; opacity:.25; display:block}
-  .dots i:first-child{opacity:.9; background:var(--hivis)}
-  .carnote{font-family:var(--ui); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:9px}
 
   /* ---------- why the name ---------- */
   .why{background:var(--band); padding-block:clamp(56px,7vw,92px)}
@@ -89,10 +88,6 @@
     border:1px solid #E6CE78; padding:4px 9px; border-radius:99px; white-space:nowrap;
   }
   .vid p{font-size:15.5px; color:var(--muted)}
-  .marq{
-    font-family:var(--ui); font-size:12px; font-weight:500; color:var(--muted);
-    margin-top:12px; padding-top:12px; border-top:1px solid var(--rule); line-height:1.8;
-  }
 
   /* ---------- stories ---------- */
   .stories{background:var(--band)}
@@ -102,13 +97,10 @@
   .story .ph, .story .shot{aspect-ratio:16/10}
   .story-body{padding:22px 24px 26px}
   .story h3{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(21px,2.3vw,27px); line-height:1.05; margin-bottom:9px}
-  .story .meta{font-family:var(--ui); font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:11px}
   .story p{font-size:15.5px; color:var(--muted)}
   .story .more{font-family:var(--ui); font-size:13.5px; font-weight:700; color:var(--accent); margin-top:16px; display:inline-block}
   a.story:hover{border-color:var(--ink)}
   a.story:hover .more{text-decoration:underline}
-  .story.soon{align-items:center; justify-content:center; text-align:center; padding:40px 26px; border-style:dashed}
-  .story.soon p{font-family:var(--ui); font-size:14.5px; max-width:30ch; margin:0}
 
   /* ---------- about ---------- */
   .aboutgrid{display:grid; gap:clamp(28px,4vw,54px); align-items:start}
@@ -148,7 +140,10 @@
   .pressband h2{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(24px,3vw,34px); line-height:1; margin-bottom:10px}
   .pressband p{font-size:15px; color:#B9C0C8; max-width:52ch}
   .pressband a.mail{color:var(--hivis); font-family:var(--ui); font-weight:600; text-decoration:none}
-  .pdl{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:18px 28px; margin:0}
+  .pdl{display:grid; grid-template-columns:1fr; gap:18px 28px; margin:0}
+  /* Locked 2x2. auto-fit went to four columns on a wide screen and to one
+     on a narrow one, and the press address wrapped at both ends. */
+  @media (min-width:500px){ .pdl{grid-template-columns:repeat(2,minmax(0,1fr))} }
   .pdl dt{font-family:var(--ui); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#8A939D; margin-bottom:4px}
   .pdl dd{margin:0; font-family:var(--ui); font-size:14.5px; color:#E4E8EC; overflow-wrap:anywhere}
 </style>
@@ -157,12 +152,12 @@
 
 <header class="topbar">
   <div class="inner">
-    <a class="wordmark" href="/"><span class="logoslot">LOGO</span>Second Kickstart</a>
+    <a class="wordmark" href="/" aria-label="Second Kickstart"><img src="img/logo-sk.png" alt="" class="logomark" width="253" height="96"><span class="wordtext">Second Kickstart</span></a>
     <nav class="nav">
       <a href="#prod">Reviews</a>
       <a href="#why">Why the name</a>
-      <a href="#stories">Stories</a>
       <a href="#about">About</a>
+      <a href="#stories">Stories</a>
       <a href="#press">Press</a>
       <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch</a>
     </nav>
@@ -181,9 +176,6 @@
         <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch on YouTube</a>
         <a class="btn2" href="#prod">See what&rsquo;s coming</a>
       </div>
-      <!-- Carousel: add one .dots i per slide when videos publish -->
-      <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
-      <p class="carnote">Carousel-ready &mdash; one slide per video once they publish</p>
     </div>
   </div>
 </section>
@@ -207,44 +199,17 @@
   <div class="inner">
     <div class="sechead">
       <h2>In production</h2>
-      <span class="note">Two ranked comparisons for the 2027 model year</span>
     </div>
     <div class="vids">
       <article class="vid">
-        <img src="img/thumb-adv.jpg" alt="Top 10 Do-Everything Adventure Bikes 2027 — title card." class="shot">
+        <img src="img/thumb-adv.jpg" alt="Top 10 Do-Everything Adventure Bikes 2027 &mdash; title card: a rider beside a loaded adventure bike on a ridge at sunset." class="shot">
         <div class="vid-top"><h3>Top 10 Do-Everything Adventure Bikes 2027</h3><span class="pill">In production</span></div>
         <p>The current adventure lineup ranked on real-world usability rather than spec-sheet superlatives &mdash; what it weighs loaded, what it costs to keep, what breaks.</p>
-        <p class="marq">BMW · KTM · Honda · Yamaha · Triumph · Ducati · Suzuki · Kawasaki · Husqvarna · Harley-Davidson · Aprilia · Moto Guzzi · Royal Enfield · CFMOTO · Zero</p>
       </article>
       <article class="vid">
-        <img src="img/thumb-dual.jpg" alt="The 10 Dual-Sports I'd Actually Buy in 2027 — title card." class="shot">
+        <img src="img/thumb-dual.jpg" alt="The 10 Dual-Sports I&rsquo;d Actually Buy in 2027 &mdash; title card: a line of dual-sport bikes in the pines, Brandon alongside." class="shot">
         <div class="vid-top"><h3>The 10 Dual-Sports I&rsquo;d Actually Buy in 2027</h3><span class="pill">In production</span></div>
         <p>Street-legal dirt bikes ranked for riders who want one machine that commutes on Friday and rides singletrack on Saturday.</p>
-        <p class="marq">Honda · Kawasaki · Suzuki · Yamaha · KTM · Husqvarna · GASGAS · Beta · Sherco · SWM · Royal Enfield · CFMOTO</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ========== STORIES ========== -->
-<section class="sec stories" id="stories">
-  <div class="inner">
-    <div class="sechead">
-      <h2>Stories</h2>
-      <span class="note">Longer pieces, published when there&rsquo;s one worth telling</span>
-    </div>
-    <div class="storygrid">
-      <a class="story" href="stories/first-bike.html">
-        <img src="img/brandon-yz100f.jpg" alt="" class="shot">
-        <div class="story-body">
-          <p class="meta">Origin</p>
-          <h3>A hundred dollars of lawn-mowing money</h3>
-          <p>I was twelve, the bike was a Yamaha YZ100F, and I bought it from a kid across town without telling my parents. What should have been the best ride of my life became a long push home, most of it uphill, because nobody had told me what a fuel shutoff valve was.</p>
-          <span class="more">Read the story &rarr;</span>
-        </div>
-      </a>
-      <article class="story soon">
-        <p>More as they come. No schedule, no filler &mdash; just the ones worth writing down.</p>
       </article>
     </div>
   </div>
@@ -267,6 +232,25 @@
       <aside class="postscript">
         <p>I&rsquo;ve been riding motorcycles a long time, and know them inside and out. I bought my first dirt bike at 12, with a hundred dollars of lawn mowing money, and one of the first things I did was take it apart. <a href="stories/first-bike.html">Read the story here.</a></p>
       </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STORIES ========== -->
+<section class="sec stories" id="stories">
+  <div class="inner">
+    <div class="sechead">
+      <h2>Stories</h2>
+    </div>
+    <div class="storygrid">
+      <a class="story" href="stories/first-bike.html">
+        <img src="img/brandon-yz100f.jpg" alt="" class="shot">
+        <div class="story-body">
+          <h3>A hundred dollars of lawn-mowing money</h3>
+          <p>I was twelve, the bike was a Yamaha YZ100F, and I bought it from a kid across town without telling my parents. What should have been the best ride of my life became a long push home, most of it uphill, because nobody had told me what a fuel shutoff valve was.</p>
+          <span class="more">Read the story &rarr;</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -317,8 +301,11 @@
 
 <footer class="foot">
   <div class="inner">
+    <img src="img/logo-wordmark.png" alt="Second Kickstart" class="footmark" width="560" height="141">
+    <div class="footrow">
     <span>&copy; <span id="yr">2026</span> Second Kickstart</span>
     <span><a href="https://www.youtube.com/@secondkickstart" rel="noopener">youtube.com/@secondkickstart</a></span>
+    </div>
   </div>
 </footer>
 

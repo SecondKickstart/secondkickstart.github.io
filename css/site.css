@@ -11,8 +11,8 @@
   --ink:#16191D;
   --muted:#626A74;
   --rule:#E2E5E9;
-  --accent:#17497E;
-  --accent-deep:#123A66;
+  --accent:#0067A7;        /* sampled from the dark end of the logo blue */
+  --accent-deep:#00527F;
   --hivis:#E8B400;
   --night:#14181C;
 
@@ -52,22 +52,25 @@ img{max-width:100%; display:block}
   font-size:23px; line-height:1; letter-spacing:.015em; text-decoration:none;
   display:flex; align-items:center; gap:10px;
 }
-/* Swap for <img src="/img/logo.svg" alt="" width="30" height="30"> once a logo exists */
-.logoslot{
-  width:30px; height:30px; flex:none; border:1.5px dashed currentColor;
-  opacity:.45; border-radius:3px; display:grid; place-items:center;
-  font-family:var(--ui); font-size:7.5px; font-weight:600; letter-spacing:.06em;
+/* Brand mark. Transparent PNG, so it sits on light or dark without a plate. */
+.logomark{height:31px; width:auto; flex:none; display:block}
+/* On a phone the mark stands alone — that is what the short form is for.
+   The link keeps its name via aria-label, so nothing is lost to a screen
+   reader when the type is hidden. */
+@media (max-width:600px){
+  .wordtext{display:none}
+  .logomark{height:33px}
 }
 .nav{display:flex; gap:26px; margin-left:auto; align-items:center}
 .nav a{font-family:var(--ui); font-size:14px; font-weight:500; text-decoration:none; color:var(--muted); white-space:nowrap}
 .nav a:hover{color:var(--ink)}
-.ytbtn{
+a.ytbtn{
   font-family:var(--ui); font-size:13.5px; font-weight:700; text-decoration:none;
   background:var(--accent); color:#fff; padding:10px 17px; white-space:nowrap;
   display:inline-flex; align-items:center; gap:8px; border-radius:2px;
 }
-.ytbtn:hover{background:var(--accent-deep)}
-.ytbtn svg{width:15px; height:15px; fill:currentColor; flex:none}
+a.ytbtn:hover{background:var(--accent-deep)}
+a.ytbtn svg{width:15px; height:15px; fill:currentColor; flex:none}
 @media (max-width:860px){ .nav a:not(.ytbtn){display:none} }
 
 /* ---------- photo slots ----------
@@ -101,8 +104,9 @@ img{max-width:100%; display:block}
 .sechead .note{font-family:var(--ui); font-size:13.5px; color:var(--muted)}
 
 /* ---------- footer ---------- */
-.foot{padding-block:30px; border-top:1px solid var(--rule); padding-bottom:calc(30px + env(safe-area-inset-bottom,0px))}
-.foot .inner{display:flex; justify-content:space-between; gap:12px 28px; flex-wrap:wrap; font-family:var(--ui); font-size:13px; color:var(--muted)}
+.foot{padding-block:34px; border-top:1px solid var(--rule); padding-bottom:calc(34px + env(safe-area-inset-bottom,0px))}
+.footmark{width:clamp(168px,21vw,224px); height:auto; margin-bottom:20px}
+.footrow{display:flex; justify-content:space-between; gap:12px 28px; flex-wrap:wrap; font-family:var(--ui); font-size:13px; color:var(--muted)}
 .foot a{text-decoration:none}
 .foot a:hover{color:var(--ink)}
 
