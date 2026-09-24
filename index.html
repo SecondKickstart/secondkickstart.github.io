@@ -91,10 +91,12 @@
 
   /* ---------- stories ---------- */
   .stories{background:var(--band)}
-  .storygrid{display:grid; gap:clamp(20px,2.6vw,32px); align-items:stretch}
-  @media (min-width:820px){ .storygrid{grid-template-columns:1.4fr 1fr} }
+  /* Same grid and gap as .vids, so a story card reads as a peer of a video
+     card rather than a feature panel. */
+  .storygrid{display:grid; gap:clamp(20px,2.6vw,34px); align-items:stretch}
+  @media (min-width:760px){ .storygrid{grid-template-columns:1fr 1fr} }
   .story{background:var(--white); border:1px solid var(--rule); display:flex; flex-direction:column; text-decoration:none}
-  .story .ph, .story .shot{aspect-ratio:16/10}
+  .story .ph, .story .shot{aspect-ratio:16/9}
   .story-body{padding:22px 24px 26px}
   .story h3{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(21px,2.3vw,27px); line-height:1.05; margin-bottom:9px}
   .story p{font-size:15.5px; color:var(--muted)}
