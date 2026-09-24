@@ -89,15 +89,18 @@
   }
   .vid p{font-size:15.5px; color:var(--muted)}
 
-  /* ---------- stories ---------- */
-  .stories{background:var(--band)}
+  /* ---------- tank bag ---------- */
+  .tankbag{background:var(--band)}
   /* Same grid and gap as .vids, so a story card reads as a peer of a video
      card rather than a feature panel. */
+  .tbintro{max-width:62ch; margin:0 0 32px; font-size:16.5px; color:var(--muted)}
   .storygrid{display:grid; gap:clamp(20px,2.6vw,34px); align-items:stretch}
   @media (min-width:760px){ .storygrid{grid-template-columns:1fr 1fr} }
   .story{background:var(--white); border:1px solid var(--rule); display:flex; flex-direction:column; text-decoration:none}
   .story .ph, .story .shot{aspect-ratio:16/9}
   .story-body{padding:22px 24px 26px}
+  .story .tag{font-family:var(--ui); font-size:10.5px; font-weight:700; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:10px}
   .story h3{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(21px,2.3vw,27px); line-height:1.05; margin-bottom:9px}
   .story p{font-size:15.5px; color:var(--muted)}
   .story .more{font-family:var(--ui); font-size:13.5px; font-weight:700; color:var(--accent); margin-top:16px; display:inline-block}
@@ -159,7 +162,7 @@
       <a href="#prod">Reviews</a>
       <a href="#why">Why the name</a>
       <a href="#about">About</a>
-      <a href="#stories">Stories</a>
+      <a href="#tank-bag">Tank Bag</a>
       <a href="#press">Press</a>
       <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch</a>
     </nav>
@@ -232,25 +235,37 @@
       <p>The Sierra foothills of Northern California are at the end of my driveway. So the bikes I review don&rsquo;t just get evaluated in a garage or on a spec sheet. They get ridden where they&rsquo;re meant to be ridden.</p>
 
       <aside class="postscript">
-        <p>I&rsquo;ve been riding motorcycles a long time, and know them inside and out. I bought my first dirt bike at 12, with a hundred dollars of lawn mowing money, and one of the first things I did was take it apart. <a href="stories/first-bike.html">Read the story here.</a></p>
+        <p>I&rsquo;ve been riding motorcycles a long time, and know them inside and out. I bought my first dirt bike at 12, with a hundred dollars of lawn mowing money, and one of the first things I did was take it apart. <a href="tank-bag/first-bike.html">Read the story here.</a></p>
       </aside>
     </div>
   </div>
 </section>
 
-<!-- ========== STORIES ========== -->
-<section class="sec stories" id="stories">
+<!-- ========== TANK BAG ========== -->
+<section class="sec tankbag" id="tank-bag">
   <div class="inner">
     <div class="sechead">
-      <h2>Stories</h2>
+      <h2>Tank Bag</h2>
+      <span class="note">Stories, explainers and the odd useful thing.</span>
     </div>
+    <p class="tbintro">On an adventure bike, the tank bag is where the good stuff rides: the map, the snacks, the tool you&rsquo;ll need later. This is the site&rsquo;s version.</p>
     <div class="storygrid">
-      <a class="story" href="stories/first-bike.html">
+      <a class="story" href="tank-bag/first-bike.html">
         <img src="img/brandon-yz100f.jpg" alt="" class="shot">
         <div class="story-body">
+          <p class="tag">Story</p>
           <h3>A hundred dollars of lawn-mowing money</h3>
           <p>I was twelve, the bike was a Yamaha YZ100F, and I bought it from a kid across town without telling my parents. What should have been the best ride of my life became a long push home, most of it uphill, because nobody had told me what a fuel shutoff valve was.</p>
           <span class="more">Read the story &rarr;</span>
+        </div>
+      </a>
+      <a class="story" href="tank-bag/firing-wheel.html">
+        <img src="img/thumb-firing-wheel.jpg" alt="Three firing wheels side by side, comparing how a single, a 270&deg; twin and a crossplane four space their power strokes across one 720&deg; cycle." class="shot">
+        <div class="story-body">
+          <p class="tag">Explainer</p>
+          <h3>Same 720&deg;, different rhythm</h3>
+          <p>Why the engines riders trust in the dirt don&rsquo;t keep perfect time. Pick three engines, press play, and watch how each one splits up the crankshaft&rsquo;s 720 degrees.</p>
+          <span class="more">Open the explainer &rarr;</span>
         </div>
       </a>
     </div>

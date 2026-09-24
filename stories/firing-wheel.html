@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Firing Wheel: Same 720°, Different Rhythm — Second Kickstart</title>
+<meta name="description" content="An interactive look at how singles, twins, triples and fours space their power strokes, and why the best engines for dirt don't keep perfect time.">
+<link rel="canonical" href="https://secondkickstart.com/tank-bag/firing-wheel.html">
+<meta property="og:site_name" content="Second Kickstart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Firing Wheel: Same 720°, Different Rhythm">
+<meta property="og:description" content="Pick three engines, press play, and watch how each one splits up the 720° cycle.">
+<meta property="og:url" content="https://secondkickstart.com/tank-bag/firing-wheel.html">
+<meta property="og:image" content="https://secondkickstart.com/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    --accent: #17497E;
+    --hivis: #E8B400;
+    --ink: #16191D;
+    --muted: #5B6470;
+    --line: #D3DAE2;
+    --band: #F4F5F7;
+    --paper: #FFFFFF;
+    --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ui: "Barlow", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 1.1rem; line-height: 1.6; }
+  img { max-width: 100%; }
+  a { color: var(--accent); }
+
+  /* Top bar */
+  .topbar {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: var(--paper); border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    max-width: 1200px; margin: 0 auto; padding: 10px 20px;
+    display: flex; align-items: center; gap: 16px 28px; flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink);
+    font-family: var(--display); font-weight: 700; font-size: 1.35rem; }
+  .brand img { height: 34px; width: auto; }
+  .nav { display: flex; gap: 6px 20px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.95rem; }
+  .nav a { color: var(--ink); text-decoration: none; }
+  .nav a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* Header */
+  .intro { max-width: 1200px; margin: 0 auto; padding: 44px 20px 20px; }
+  .kicker { font-family: var(--ui); font-weight: 600; color: var(--accent); margin: 0 0 6px; }
+  .kicker a { color: inherit; text-decoration: none; }
+  .kicker a:hover { text-decoration: underline; }
+  h1 { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.02; margin: 0 0 16px; }
+  .lede { max-width: 62ch; font-size: 1.2rem; margin: 0; }
+
+  /* Instrument */
+  .instrument { background: var(--band); padding: 24px 0 28px; margin-top: 12px; }
+  .instrument-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  .stage-wrap { width: 100%; background: var(--band); }
+  #stage { width: 100%; height: auto; display: block; }
+  .controls {
+    margin-top: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+    padding: 14px; display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end;
+    font-family: var(--ui);
+  }
+  .group { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .group label, .group .label { font-size: 0.85rem; color: var(--muted); }
+  .buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+  button, select {
+    font-family: var(--ui); font-size: 0.95rem; border-radius: 4px; border: 1px solid var(--line);
+    background: var(--paper); color: var(--ink); padding: 8px 12px; min-height: 42px; max-width: 100%;
+  }
+  button { cursor: pointer; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; min-width: 90px; }
+  button:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid var(--hivis); outline-offset: 2px; }
+  .keys { font-family: var(--ui); font-size: 0.9rem; color: var(--muted); margin: 10px 2px 0; }
+
+  /* Full screen mode */
+  body.full { overflow: hidden; }
+  body.full .stage-wrap {
+    position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 50;
+    display: grid; place-items: center;
+    padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
+  }
+  body.full #stage { width: min(100vw, calc(100vh * var(--ar, 1.92))); }
+  .exit-full { display: none; }
+  body.full .exit-full {
+    display: block; position: fixed; z-index: 60;
+    top: calc(env(safe-area-inset-top, 0px) + 12px); right: 12px;
+  }
+
+  /* Article */
+  .article { max-width: 1200px; margin: 0 auto; padding: 36px 20px 56px; }
+  .article section { max-width: 66ch; }
+  h2 { font-family: var(--display); font-weight: 700; font-size: 2rem; line-height: 1.1; margin: 36px 0 10px; }
+  .article section:first-child h2 { margin-top: 0; }
+  .article p { margin: 0 0 14px; }
+  .article ul { padding-left: 1.2em; margin: 0 0 14px; }
+  .article li { margin-bottom: 10px; }
+  .note { font-family: var(--ui); font-size: 0.95rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 32px; }
+
+  /* Footer */
+  .footer { background: var(--band); border-top: 1px solid var(--line); }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 24px 20px; display: flex; flex-wrap: wrap;
+    gap: 12px 24px; align-items: center; justify-content: space-between; font-family: var(--ui); font-size: 0.95rem; color: var(--muted); }
+  .footer img { height: 30px; width: auto; }
+
+  @media (max-width: 640px) {
+    .intro { padding-top: 28px; }
+    .instrument-inner { padding: 0 10px; }
+    .controls { padding: 12px; align-items: stretch; }
+    .group { flex: 1 1 100%; }
+    .group select { width: 100%; }
+    .keys { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../"><img src="../img/logo-sk.png" alt="">Second Kickstart</a>
+    <nav class="nav" aria-label="Site">
+      <a href="../#prod">Reviews</a>
+      <a href="../#why">Why the name</a>
+      <a href="../#about">About</a>
+      <a href="../#tank-bag">Tank Bag</a>
+      <a href="../#press">Press</a>
+      <a href="https://www.youtube.com/@secondkickstart">Watch</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    <p class="kicker"><a href="../#tank-bag">From the Tank Bag</a></p>
+    <h1>Same 720°, different rhythm</h1>
+    <p class="lede">Every four-stroke engine fires each cylinder once for every two turns of the crankshaft: 720 degrees. How an engine spaces those bangs around the clock changes how it sounds, how it shakes, and how well you can feel the rear tire. Pick three engines, press play, and watch. Better yet, turn the sound on.</p>
+  </div>
+
+  <div class="instrument">
+    <div class="instrument-inner">
+      <div class="stage-wrap">
+        <svg id="stage" role="img" aria-label="Three firing wheels comparing how different engines space their power strokes across one 720 degree cycle"></svg>
+        <button class="exit-full" id="exitFull">Exit full screen</button>
+      </div>
+
+      <div class="controls">
+        <div class="group">
+          <span class="label">Playback</span>
+          <div class="buttons">
+            <button id="play" class="primary">Play</button>
+            <button id="restart">Restart</button>
+          </div>
+        </div>
+        <div class="group"><label for="slot0">First engine</label><select id="slot0"></select></div>
+        <div class="group"><label for="slot1">Second engine</label><select id="slot1"></select></div>
+        <div class="group"><label for="slot2">Third engine</label><select id="slot2"></select></div>
+        <div class="group">
+          <label for="speed">Speed</label>
+          <select id="speed">
+            <option value="6">Very slow</option>
+            <option value="3" selected>Slow</option>
+            <option value="1.2">Medium</option>
+            <option value="0.4">Brisk</option>
+          </select>
+        </div>
+        <div class="group">
+          <span class="label">Sound and view</span>
+          <div class="buttons">
+            <button id="sound">Sound off</button>
+            <button id="full">Full screen</button>
+          </div>
+        </div>
+      </div>
+      <p class="keys">Keyboard: Space plays and pauses, R restarts, F toggles full screen. Sound plays one engine at a time; press the sound button to move from the first to the third.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <section>
+      <h2>How to read it</h2>
+      <p>Each dial is one full cycle, so the hand makes one lap for every two turns of the crank. The numbered markers are the cylinders, in the order they fire, and each one flashes when it goes. The yellow arc is the longest quiet stretch between one bang and the next.</p>
+      <p>On a wide screen, the strip underneath lays the same rhythm out in a line across four turns of the crank, so you can compare engines beat for beat.</p>
+    </section>
+
+    <section>
+      <h2>Things to try</h2>
+      <ul>
+        <li>Put the 90° V-twin next to the 270° parallel twin. The dials are identical, which is why a Ténéré 700 sounds a little like a Ducati.</li>
+        <li>Set the speed to Brisk, turn the sound on, and listen to the single, then the 270° twin, then the crossplane four.</li>
+        <li>Compare the 360° twin with the boxer. Same rhythm, very different motorcycles. Whatever makes a boxer special, it isn't the beat.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Why the gaps matter</h2>
+      <p>You'd think the smoothest, most even rhythm would always win. On the highway, it often does. But in the dirt, the engines riders trust most tend to leave space between bangs: the single, the 270° twin that powers most of today's middleweight adventure bikes, even Triumph's T-plane triple, which gave up a perfectly even beat on the Tiger 900.</p>
+      <p>Nobody fully agrees on why. One idea is that the tire gets a moment to grab between hits. Cycle World's Kevin Cameron argued it's less about grip than feel: an uneven engine lets the rider sense the tire starting to slide, and ride closer to the limit because of it. Yamaha's argument is about noise, the constant surge and sag in crank speed caused by heavy pistons stopping and starting. Take that out, and what reaches the tire is what your right hand asked for. I dig into all three in an upcoming video.</p>
+    </section>
+
+    <p class="note">Firing intervals come from manufacturer materials and published technical references. Some engines vary by model and year. If something here is wrong, write to <a href="mailto:press@secondkickstart.com">press@secondkickstart.com</a> and it gets fixed.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="../img/logo-wordmark.png" alt="Second Kickstart">
+    <span>© 2026 Second Kickstart · <a href="https://www.youtube.com/@secondkickstart">youtube.com/@secondkickstart</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var C = {
+    band: "#F4F5F7", plate: "#FFFFFF", ink: "#16191D", muted: "#6B7480",
+    rim: "#D3DAE2", gap: "#9DB3CC", navy: "#17497E", hivis: "#E8B400"
+  };
+
+  // Firing points in crank degrees within one 720° cycle; labels are cylinder numbers in firing order.
+  var ENGINES = {
+    single:  { name: "Single",                  lane: "Single",          ex: "DR-Z, KLR, 690, Himalayan", fires: [0],                labels: ["1"] },
+    twin360: { name: "Parallel twin, 360°",     lane: "Twin, 360°",      ex: "W800, older F800GS",        fires: [0, 360],           labels: ["1", "2"] },
+    twin180: { name: "Parallel twin, 180°",     lane: "Twin, 180°",      ex: "Versys 650, Ninja 650",     fires: [0, 180],           labels: ["1", "2"] },
+    twin270: { name: "Parallel twin, 270°",     lane: "Twin, 270°",      ex: "Ténéré 700, Africa Twin",   fires: [0, 270],           labels: ["1", "2"] },
+    v90:     { name: "90° V-twin",              lane: "90° V-twin",      ex: "Ducati, V-Strom 650",       fires: [0, 270],           labels: ["1", "2"] },
+    v45:     { name: "45° V-twin",              lane: "45° V-twin",      ex: "classic Harley-Davidson",   fires: [0, 315],           labels: ["1", "2"] },
+    v75:     { name: "75° V-twin",              lane: "75° V-twin",      ex: "KTM 1390 Super Adventure",  fires: [0, 285],           labels: ["1", "2"] },
+    boxer:   { name: "Boxer twin",              lane: "Boxer",           ex: "BMW R 1300 GS",             fires: [0, 360],           labels: ["1", "2"] },
+    triple:  { name: "Triple, 120° crank",      lane: "Triple",          ex: "MT-09, Tracer 9",           fires: [0, 240, 480],      labels: ["1", "2", "3"] },
+    tplane:  { name: "Triple, T-plane",         lane: "T-plane triple",  ex: "Triumph Tiger 900",         fires: [0, 180, 450],      labels: ["1", "3", "2"] },
+    flat4:   { name: "Inline four, flat-plane", lane: "Flat-plane four", ex: "Versys 1100",               fires: [0, 180, 360, 540], labels: ["1", "2", "4", "3"] },
+    cross4:  { name: "Inline four, crossplane", lane: "Crossplane four", ex: "Yamaha R1",                 fires: [0, 270, 450, 540], labels: ["1", "3", "2", "4"] }
+  };
+
+  var WIDE = {
+    vw: 1920, vh: 1000, R: 230, plateExtra: 34, markerR: 22, markerFont: 24, tickFont: 22, hand: 7,
+    wheels: [[360, 400], [960, 400], [1560, 400]], text: "below", nameSize: 42, descSize: 26,
+    lanes: true, laneX0: 300, laneX1: 1800, laneY: [850, 900, 950],
+    hud: { x: 1800, y1: 76, y2: 116, s1: 44, s2: 24 }, legend: { x: 120, y: 70, s: 24 }
+  };
+  var TALL = {
+    vw: 1000, vh: 1500, R: 190, plateExtra: 32, markerR: 28, markerFont: 32, tickFont: 26, hand: 9,
+    wheels: [[250, 340], [250, 800], [250, 1260]], text: "right", textX: 490, nameSize: 54, descSize: 34,
+    lanes: false,
+    hud: { x: 960, y1: 72, y2: 112, s1: 52, s2: 30 }, legend: { x: 40, y: 66, s: 30 }
+  };
+
+  var slots = ["single", "twin270", "cross4"];
+  var L = WIDE;
+  var NS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("stage");
+
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function txt(str, attrs, parent) { var t = el("text", attrs, parent); t.textContent = str; return t; }
+  function dialPt(cx, cy, r, crank) {
+    var a = (crank / 720) * 2 * Math.PI - Math.PI / 2;
+    return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+  }
+  function arcPath(cx, cy, r, d1, d2) {
+    var p1 = dialPt(cx, cy, r, d1), p2 = dialPt(cx, cy, r, d2);
+    var large = (d2 - d1) / 2 > 180 ? 1 : 0;
+    return "M" + p1[0] + " " + p1[1] + " A" + r + " " + r + " 0 " + large + " 1 " + p2[0] + " " + p2[1];
+  }
+  function gapsOf(fires) {
+    return fires.map(function (f, i) {
+      var end = i + 1 < fires.length ? fires[i + 1] : fires[0] + 720;
+      return { start: f, end: end, len: end - f };
+    });
+  }
+  function laneX(deg) { return L.laneX0 + (deg / 1440) * (L.laneX1 - L.laneX0); }
+
+  // ---------- State ----------
+  var T = 0, playing = false, secPerCycle = 3, soloSlot = -1, lastTime = null;
+  var wheels = [], hud = {};
+
+  function chooseLayout() { return window.innerWidth < 820 ? TALL : WIDE; }
+
+  function build() {
+    L = chooseLayout();
+    svg.setAttribute("viewBox", "0 0 " + L.vw + " " + L.vh);
+    document.documentElement.style.setProperty("--ar", (L.vw / L.vh).toFixed(4));
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    el("rect", { x: 0, y: 0, width: L.vw, height: L.vh, fill: C.band }, svg);
+
+    // Legend
+    el("rect", { x: L.legend.x, y: L.legend.y - L.legend.s * 0.55, width: L.legend.s * 1.6, height: L.legend.s * 0.5, rx: 3, fill: C.hivis }, svg);
+    txt("Longest quiet stretch", { x: L.legend.x + L.legend.s * 2.1, y: L.legend.y, fill: C.muted, "font-family": "Barlow, sans-serif", "font-size": L.legend.s }, svg);
+
+    // Crank readout
+    hud.crank = txt("Crank 0°", { x: L.hud.x, y: L.hud.y1, "text-anchor": "end", fill: C.navy, "font-family": "Barlow Condensed, Arial Narrow, sans-serif", "font-weight": 600, "font-size": L.hud.s1 }, svg);
+    hud.turn = txt("Turn 1 of 2", { x: L.hud.x, y: L.hud.y2, "text-anchor": "end", fill: C.muted, "font-family": "Barlow, sans-serif", "font-size": L.hud.s2 }, svg);
+
+    wheels = slots.map(function (key, i) { return buildWheel(ENGINES[key], L.wheels[i][0], L.wheels[i][1], i); });
+    if (L.lanes) buildLanes();
+    render(performance.now());
+  }
+
+  function buildWheel(eng, cx, cy, slotIndex) {
+    var g = el("g", {}, svg), R = L.R, mr = L.markerR;
+    var w = { eng: eng, cx: cx, cy: cy, markers: [], laneTicks: [], last: [], laneLast: [] };
+
+    el("circle", { cx: cx, cy: cy, r: R + L.plateExtra, fill: C.plate, stroke: C.rim, "stroke-width": 2 }, g);
+    w.pulse = el("circle", { cx: cx, cy: cy, r: R + L.plateExtra, fill: C.hivis, opacity: 0 }, g);
+    el("circle", { cx: cx, cy: cy, r: R, fill: "none", stroke: C.rim, "stroke-width": 16 }, g);
+
+    var gaps = gapsOf(eng.fires);
+    var lens = gaps.map(function (x) { return x.len; });
+    var maxLen = Math.max.apply(null, lens), minLen = Math.min.apply(null, lens);
+    var even = maxLen === minLen;
+    gaps.forEach(function (gp) {
+      if (gp.len >= 720) {
+        el("circle", { cx: cx, cy: cy, r: R, fill: "none", stroke: C.hivis, "stroke-width": 16 }, g);
+      } else {
+        el("path", { d: arcPath(cx, cy, R, gp.start, gp.end), fill: "none", stroke: (!even && gp.len === maxLen) ? C.hivis : C.gap, "stroke-width": 16 }, g);
+      }
+    });
+
+    for (var d = 0; d < 720; d += 90) {
+      var major = d % 180 === 0;
+      var a = dialPt(cx, cy, R - 14, d), b = dialPt(cx, cy, R - (major ? 38 : 28), d);
+      el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: C.muted, "stroke-width": major ? 3 : 2 }, g);
+      if (major) {
+        var lp = dialPt(cx, cy, R - 64, d);
+        txt(d + "°", { x: lp[0], y: lp[1] + L.tickFont * 0.35, "text-anchor": "middle", fill: C.muted, "font-family": "Barlow, sans-serif", "font-size": L.tickFont }, g);
+      }
+    }
+
+    w.hand = el("line", { x1: cx, y1: cy, x2: cx, y2: cy - R + 22, stroke: C.navy, "stroke-width": L.hand, "stroke-linecap": "round" }, g);
+    el("circle", { cx: cx, cy: cy, r: L.hand * 1.9, fill: C.navy }, g);
+
+    eng.fires.forEach(function (f, k) {
+      var p = dialPt(cx, cy, R, f);
+      var ring = el("circle", { cx: p[0], cy: p[1], r: mr, fill: "none", stroke: C.hivis, "stroke-width": 6, opacity: 0 }, g);
+      var dot = el("circle", { cx: p[0], cy: p[1], r: mr, fill: C.navy, stroke: C.plate, "stroke-width": 3 }, g);
+      var lab = txt(eng.labels[k], { x: p[0], y: p[1] + L.markerFont * 0.34, "text-anchor": "middle", fill: "#FFFFFF", "font-family": "Barlow Condensed, sans-serif", "font-weight": 700, "font-size": L.markerFont }, g);
+      w.markers.push({ ring: ring, dot: dot, lab: lab });
+      w.last.push(-1e9);
+    });
+
+    var descOne = eng.fires.length === 1 ? "Fires once, then 720° of quiet"
+      : even ? "Fires evenly, every " + maxLen + "°"
+      : "Gaps of " + lens.map(function (x) { return x + "°"; }).join(", ");
+
+    if (L.text === "below") {
+      txt(eng.name, { x: cx, y: cy + R + 76, "text-anchor": "middle", fill: C.ink, "font-family": "Barlow Condensed, Arial Narrow, sans-serif", "font-weight": 600, "font-size": L.nameSize }, g);
+      txt(descOne, { x: cx, y: cy + R + 112, "text-anchor": "middle", fill: C.muted, "font-family": "Barlow, sans-serif", "font-size": L.descSize }, g);
+      w.soundBar = el("rect", { x: cx - 60, y: cy + R + 124, width: 120, height: 5, rx: 2, fill: C.hivis, opacity: 0 }, g);
+    } else {
+      var nameLines = eng.name.split(", ");
+      var descLines = eng.fires.length === 1 ? ["Fires once, then", "720° of quiet"]
+        : even ? ["Fires evenly,", "every " + maxLen + "°"]
+        : ["Uneven gaps:", lens.map(function (x) { return x + "°"; }).join(", ")];
+      var nLH = L.nameSize * 1.02, dLH = L.descSize * 1.3, gapY = 18;
+      var total = nameLines.length * nLH + gapY + descLines.length * dLH;
+      var y = cy - total / 2 + L.nameSize * 0.8;
+      nameLines.forEach(function (line) {
+        txt(line, { x: L.textX, y: y, fill: C.ink, "font-family": "Barlow Condensed, Arial Narrow, sans-serif", "font-weight": 600, "font-size": L.nameSize }, g);
+        y += nLH;
+      });
+      y += gapY - nLH + dLH;
+      descLines.forEach(function (line) {
+        txt(line, { x: L.textX, y: y, fill: C.muted, "font-family": "Barlow, sans-serif", "font-size": L.descSize }, g);
+        y += dLH;
+      });
+      w.soundBar = el("rect", { x: L.textX, y: y - dLH + 18, width: 140, height: 6, rx: 3, fill: C.hivis, opacity: 0 }, g);
+    }
+    return w;
+  }
+
+  function buildLanes() {
+    var g = el("g", {}, svg), Y = L.laneY;
+    for (var t = 0; t <= 4; t++) {
+      var x = laneX(t * 360);
+      el("line", { x1: x, y1: Y[0] - 30, x2: x, y2: Y[2] + 26, stroke: C.rim, "stroke-width": t % 2 === 0 ? 3 : 2 }, g);
+      if (t < 4) txt("Turn " + (t + 1), { x: laneX(t * 360 + 180), y: Y[0] - 38, "text-anchor": "middle", fill: C.muted, "font-family": "Barlow, sans-serif", "font-size": 20 }, g);
+    }
+    wheels.forEach(function (w, i) {
+      var y = Y[i];
+      txt(w.eng.lane, { x: L.laneX0 - 22, y: y + 8, "text-anchor": "end", fill: C.ink, "font-family": "Barlow Condensed, sans-serif", "font-weight": 600, "font-size": 26 }, g);
+      el("line", { x1: L.laneX0, y1: y, x2: L.laneX1, y2: y, stroke: C.rim, "stroke-width": 4 }, g);
+      for (var c = 0; c < 2; c++) {
+        w.eng.fires.forEach(function (f, k) {
+          var r = el("rect", { x: laneX(f + c * 720) - 5, y: y - 18, width: 10, height: 36, rx: 2, fill: C.navy }, g);
+          w.laneTicks.push({ rect: r, k: k, c: c });
+          w.laneLast.push(-1e9);
+        });
+      }
+    });
+    hud.playhead = el("line", { x1: L.laneX0, y1: Y[0] - 30, x2: L.laneX0, y2: Y[2] + 26, stroke: C.ink, "stroke-width": 3 }, g);
+  }
+
+  // ---------- Sound ----------
+  var actx = null;
+  function ensureAudio() {
+    if (!actx) { var AC = window.AudioContext || window.webkitAudioContext; if (AC) actx = new AC(); }
+    if (actx && actx.state === "suspended") actx.resume();
+  }
+  function thump() {
+    if (!actx) return;
+    var t0 = actx.currentTime;
+    var osc = actx.createOscillator(), og = actx.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(110, t0);
+    osc.frequency.exponentialRampToValueAtTime(42, t0 + 0.12);
+    og.gain.setValueAtTime(0.9, t0);
+    og.gain.exponentialRampToValueAtTime(0.001, t0 + 0.16);
+    osc.connect(og); og.connect(actx.destination);
+    osc.start(t0); osc.stop(t0 + 0.18);
+    var len = Math.floor(actx.sampleRate * 0.06);
+    var buf = actx.createBuffer(1, len, actx.sampleRate), data = buf.getChannelData(0);
+    for (var i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / len);
+    var src = actx.createBufferSource(); src.buffer = buf;
+    var lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 900;
+    var ng = actx.createGain(); ng.gain.value = 0.35;
+    src.connect(lp); lp.connect(ng); ng.connect(actx.destination);
+    src.start(t0);
+  }
+
+  // ---------- Animation ----------
+  function checkFires(prevT, curT, now) {
+    wheels.forEach(function (w, i) {
+      w.eng.fires.forEach(function (f, k) {
+        var fv = f + 720 * Math.floor((curT - f) / 720);
+        if (fv > prevT && fv <= curT) {
+          w.last[k] = now;
+          var c = Math.floor((((fv % 1440) + 1440) % 1440) / 720);
+          w.laneTicks.forEach(function (lt, j) { if (lt.k === k && lt.c === c) w.laneLast[j] = now; });
+          if (i === soloSlot) thump();
+        }
+      });
+    });
+  }
+
+  function render(now) {
+    var p = ((T % 720) + 720) % 720;
+    var flashMs = Math.min(340, secPerCycle * 1000 * 0.3);
+    hud.crank.textContent = "Crank " + Math.floor(p) + "°";
+    hud.turn.textContent = "Turn " + (p < 360 ? 1 : 2) + " of 2";
+    if (L.lanes && hud.playhead) {
+      var hx = laneX(((T % 1440) + 1440) % 1440);
+      hud.playhead.setAttribute("x1", hx); hud.playhead.setAttribute("x2", hx);
+    }
+    wheels.forEach(function (w, i) {
+      var tip = dialPt(w.cx, w.cy, L.R - 22, p);
+      w.hand.setAttribute("x2", tip[0]); w.hand.setAttribute("y2", tip[1]);
+      var peak = 0;
+      w.markers.forEach(function (m, k) {
+        var inten = Math.max(0, 1 - (now - w.last[k]) / flashMs);
+        peak = Math.max(peak, inten);
+        m.dot.setAttribute("fill", inten > 0.02 ? C.hivis : C.navy);
+        m.dot.setAttribute("r", L.markerR + 10 * inten);
+        m.lab.setAttribute("fill", inten > 0.02 ? C.ink : "#FFFFFF");
+        m.ring.setAttribute("r", L.markerR + 56 * (1 - inten));
+        m.ring.setAttribute("opacity", inten);
+      });
+      w.pulse.setAttribute("opacity", peak * 0.14);
+      w.laneTicks.forEach(function (lt, j) {
+        var inten = Math.max(0, 1 - (now - w.laneLast[j]) / flashMs);
+        lt.rect.setAttribute("fill", inten > 0.02 ? C.hivis : C.navy);
+      });
+      w.soundBar.setAttribute("opacity", i === soloSlot ? 1 : 0);
+    });
+  }
+
+  function frame(now) {
+    if (lastTime === null) lastTime = now;
+    var dt = Math.min(0.1, (now - lastTime) / 1000);
+    lastTime = now;
+    if (playing) {
+      var prevT = T;
+      T += (dt / secPerCycle) * 720;
+      checkFires(prevT, T, now);
+    }
+    render(now);
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Controls ----------
+  var playBtn = document.getElementById("play");
+  var soundBtn = document.getElementById("sound");
+  var fullBtn = document.getElementById("full");
+
+  function setPlaying(v) {
+    playing = v;
+    playBtn.textContent = v ? "Pause" : "Play";
+    if (v && soloSlot >= 0) ensureAudio();
+  }
+  function restart() {
+    T = 0;
+    wheels.forEach(function (w) {
+      w.last = w.last.map(function () { return -1e9; });
+      w.laneLast = w.laneLast.map(function () { return -1e9; });
+    });
+    checkFires(-0.001, 0, performance.now());
+  }
+  function setFull(on) {
+    document.body.classList.toggle("full", on);
+    fullBtn.textContent = on ? "Exit full screen" : "Full screen";
+    var lay = chooseLayout();
+    if (lay !== L) build();
+  }
+
+  var soundNames = ["Sound: first", "Sound: second", "Sound: third"];
+  soundBtn.addEventListener("click", function () {
+    soloSlot = soloSlot >= 2 ? -1 : soloSlot + 1;
+    soundBtn.textContent = soloSlot < 0 ? "Sound off" : soundNames[soloSlot];
+    if (soloSlot >= 0) ensureAudio();
+  });
+  playBtn.addEventListener("click", function () { setPlaying(!playing); });
+  document.getElementById("restart").addEventListener("click", restart);
+  fullBtn.addEventListener("click", function () { setFull(!document.body.classList.contains("full")); });
+  document.getElementById("exitFull").addEventListener("click", function () { setFull(false); });
+  document.getElementById("speed").addEventListener("change", function (e) { secPerCycle = parseFloat(e.target.value); });
+
+  [0, 1, 2].forEach(function (i) {
+    var sel = document.getElementById("slot" + i);
+    Object.keys(ENGINES).forEach(function (key) {
+      var o = document.createElement("option");
+      o.value = key;
+      o.textContent = ENGINES[key].name + " (" + ENGINES[key].ex + ")";
+      sel.appendChild(o);
+    });
+    sel.value = slots[i];
+    sel.addEventListener("change", function () { slots[i] = sel.value; build(); });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    var tag = (e.target && e.target.tagName) || "";
+    if (tag === "SELECT" || tag === "BUTTON" || tag === "INPUT" || tag === "A") return;
+    if (e.code === "Space") { e.preventDefault(); setPlaying(!playing); }
+    else if (e.key === "r" || e.key === "R") restart();
+    else if (e.key === "f" || e.key === "F") setFull(!document.body.classList.contains("full"));
+    else if (e.key === "Escape") setFull(false);
+  });
+
+  var resizeTimer = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { if (chooseLayout() !== L) build(); }, 150);
+  });
+
+  build();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
