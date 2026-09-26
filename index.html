@@ -6,6 +6,8 @@
 <title>Second Kickstart — Adventure &amp; Dual-Sport Motorcycle Reviews</title>
 <meta name="description" content="Bike reviews, ranked comparisons and practical advice for riders getting back on. Adventure and dual-sport motorcycles, reviewed honestly.">
 <link rel="canonical" href="https://secondkickstart.com/">
+<link rel="icon" href="img/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="img/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -16,11 +18,14 @@
 <meta property="og:description" content="Bike reviews, ranked comparisons and practical advice for riders getting back on.">
 <meta property="og:url" content="https://secondkickstart.com/">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://secondkickstart.com/img/hero.jpg">
+<meta property="og:image" content="https://secondkickstart.com/img/og-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Kickstart — a rider and dual-sport motorcycle on a ridge above a river valley.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap">
 
 <link rel="stylesheet" href="css/site.css">
 
@@ -55,13 +60,20 @@
   }
   .hero-sub{
     font-family:var(--ui); font-size:clamp(15px,1.7vw,19px); font-weight:500;
-    line-height:1.45; max-width:44ch; margin-bottom:26px;
+    line-height:1.45; max-width:44ch; margin-bottom:0;
   }
-  .hero-cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
   .btn2{
     font-family:var(--ui); font-size:14px; font-weight:600; text-decoration:none;
     padding:12px 20px; border:1.5px solid currentColor; border-radius:2px; white-space:nowrap;
   }
+
+  /* ---------- brand band ----------
+     The wordmark on the dark ground it was drawn for, carrying the two
+     calls to action that used to sit on the hero photograph. */
+  .brandband{background:var(--night); color:#fff; padding-block:clamp(26px,3.4vw,40px)}
+  .brandband .inner{display:flex; align-items:center; justify-content:space-between; gap:20px 44px; flex-wrap:wrap}
+  .bandmark{width:clamp(196px,24vw,288px); height:auto; flex:none}
+  .bandcta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
 
   /* ---------- why the name ---------- */
   .why{background:var(--band); padding-block:clamp(56px,7vw,92px)}
@@ -160,7 +172,6 @@
     <a class="wordmark" href="/" aria-label="Second Kickstart"><img src="img/logo-sk.png" alt="" class="logomark" width="253" height="96"><span class="wordtext">Second Kickstart</span></a>
     <nav class="nav">
       <a href="#prod">Reviews</a>
-      <a href="#why">Why the name</a>
       <a href="#about">About</a>
       <a href="#tank-bag">Tank Bag</a>
       <a href="#press">Press</a>
@@ -177,10 +188,17 @@
       <p class="hero-eyebrow">Adventure &amp; dual-sport</p>
       <h1>The second kick is the one that matters</h1>
       <p class="hero-sub">Bike reviews, ranked comparisons and the practical stuff nobody puts in a brochure &mdash; for riders getting back on.</p>
-      <div class="hero-cta">
-        <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch on YouTube</a>
-        <a class="btn2" href="#prod">See what&rsquo;s coming</a>
-      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BRAND BAND ========== -->
+<section class="brandband">
+  <div class="inner">
+    <img src="img/logo-wordmark.png" alt="Second Kickstart" class="bandmark" width="560" height="141">
+    <div class="bandcta">
+      <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch on YouTube</a>
+      <a class="btn2" href="#prod">See what&rsquo;s coming</a>
     </div>
   </div>
 </section>
@@ -190,7 +208,6 @@
   <div class="inner whygrid">
     <img src="img/kick-lever.jpg" alt="A boot resting on a motorcycle kickstart lever at sunset." class="shot">
     <div>
-      <p class="eyebrow">Why Second Kickstart</p>
       <h2>Nobody panics at the first kick</h2>
       <p>Every bike I learned on had a kick lever. No button, no fuss. Fold it out, give it your weight, and pray.</p>
       <p>They almost never caught on the first kick, but nobody panics at the first one. It&rsquo;s the second that tells you what kind of day you&rsquo;re going to have. If it catches, the bike is happy and you&rsquo;re going for a ride. If it doesn&rsquo;t, your heart sinks a little, because now you&rsquo;re a mechanic instead of a rider, and that ride will have to wait.</p>

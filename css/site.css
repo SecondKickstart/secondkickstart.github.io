@@ -18,14 +18,14 @@
 
   --disp:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
   --ui:'Barlow','Helvetica Neue',Arial,sans-serif;
-  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --text:'Barlow','Helvetica Neue',Arial,sans-serif;   /* body copy — was Source Serif 4 */
 }
 
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
   background:var(--white); color:var(--ink);
-  font-family:var(--serif); font-size:17px; line-height:1.62;
+  font-family:var(--text); font-size:17px; line-height:1.58;
   -webkit-font-smoothing:antialiased;
 }
 h1,h2,h3,h4{margin:0; text-wrap:balance}
