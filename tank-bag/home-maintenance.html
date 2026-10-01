@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Motorcycle Maintenance You Can Do at Home — Second Kickstart</title>
+<meta name="description" content="Which jobs are worth doing yourself, how often, how hard each one is, and what to hand to a shop. With a filterable table of intervals, difficulty and what the parts cost.">
+<link rel="canonical" href="https://secondkickstart.com/tank-bag/home-maintenance.html">
+<meta property="og:site_name" content="Second Kickstart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Motorcycle maintenance you can do at home">
+<meta property="og:description" content="What to do yourself, how often, how hard it is, and which jobs to hand to a shop.">
+<meta property="og:url" content="https://secondkickstart.com/tank-bag/home-maintenance.html">
+<meta property="og:image" content="https://secondkickstart.com/img/thumb-home-maintenance.jpg">
+<meta property="og:image:width" content="1440">
+<meta property="og:image:height" content="810">
+<meta property="og:image:alt" content="A bench laid out with oil, a filter, a torque wrench, foam filter cleaner and chain lube, in front of a blueprint of a bike.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+<link rel="icon" href="../img/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="../img/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../img/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<style>
+  /* ----------------------------------------------------------------------
+     Home maintenance — page-specific layout only. Colour, type and the
+     shell come from ../css/site.css. Three semantic colours are added for
+     the home/shop recommendation, keyed to the site's accent and hi-vis.
+     ---------------------------------------------------------------------- */
+  :root{
+    --home:#0F6E46;   --home-bg:#E8F3ED;
+    --either:#8A6400; --either-bg:#FBF2D8;
+    --shop:#A42A2E;   --shop-bg:#F8E6E6;
+  }
+  html{scroll-padding-top:86px}
+  main a{color:var(--accent)}
+
+  .wrap{max-width:1120px; margin:0 auto; padding-inline:clamp(20px,4vw,52px)}
+  .prose{max-width:66ch}
+
+  /* ---------- masthead ---------- */
+  .arthead{padding-block:clamp(40px,5.5vw,68px) clamp(26px,3vw,36px)}
+  .crumb{
+    font-family:var(--ui); font-size:12px; font-weight:600; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); text-decoration:none;
+    display:inline-block; margin-bottom:24px;
+  }
+  .crumb:hover{color:var(--ink)}
+  .arthead h1{
+    font-family:var(--disp); font-weight:700; text-transform:uppercase;
+    font-size:clamp(34px,6vw,64px); line-height:.96; margin-bottom:18px; max-width:18ch;
+  }
+  .arthead .lede{font-size:clamp(18px,1.95vw,20.5px); line-height:1.5; max-width:62ch; margin:0; color:var(--muted)}
+
+  /* Three ground rules. Hi-vis bars rather than the accent, so they read as
+     warnings alongside the blue used for navigation and links. */
+  .rules{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr));
+    gap:20px 34px; margin-top:clamp(30px,3.6vw,42px);
+    border-top:2px solid var(--ink); padding-top:24px;
+  }
+  .rules div{border-left:4px solid var(--hivis); padding:2px 0 2px 16px}
+  .rules strong{
+    display:block; font-family:var(--disp); font-weight:700; text-transform:uppercase;
+    font-size:19px; line-height:1.08; letter-spacing:.01em; margin-bottom:5px;
+  }
+  .rules span{display:block; font-family:var(--ui); font-size:14.5px; line-height:1.46; color:var(--muted)}
+
+  /* ---------- the reference table ---------- */
+  .glance{background:var(--band); padding-block:clamp(44px,5.5vw,68px); margin-top:clamp(44px,5.5vw,68px)}
+  .glance h2, .topic h2{
+    font-family:var(--disp); font-weight:700; text-transform:uppercase;
+    font-size:clamp(26px,3.4vw,38px); line-height:1; margin:0;
+  }
+  .glance .headrow{border-top:2px solid var(--ink); padding-top:14px; margin-bottom:22px}
+
+  /* The selector. Built as one machined bar rather than separate pills: a
+     recessed track, a solid slug that slides to the active segment, and a
+     hi-vis edge under it. .hasslug is set by script, so without JS the
+     pressed state still paints its own fill. */
+  .selector{display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; margin-bottom:20px}
+  .selector .label{
+    font-family:var(--ui); font-size:11px; font-weight:700; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .seg{
+    position:relative; display:inline-flex; background:var(--white);
+    border:1px solid var(--rule); border-radius:3px; padding:4px;
+    box-shadow:inset 0 1px 2px rgba(22,25,29,.05);
+  }
+  .seg button{
+    position:relative; z-index:2; appearance:none; border:0; background:none; cursor:pointer;
+    font-family:var(--disp); font-weight:600; font-size:16px; letter-spacing:.07em;
+    text-transform:uppercase; color:var(--muted); padding:8px 16px 7px; border-radius:2px;
+    display:inline-flex; align-items:baseline; gap:7px; white-space:nowrap;
+    transition:color .18s ease;
+  }
+  .seg button + button{box-shadow:-1px 0 0 var(--rule)}
+  .seg button:hover{color:var(--ink)}
+  .seg button .n{
+    font-family:var(--ui); font-size:11px; font-weight:600; letter-spacing:.04em;
+    font-variant-numeric:tabular-nums; color:var(--muted); transition:color .18s ease;
+  }
+  .seg button[aria-pressed="true"]{color:#fff}
+  .seg button[aria-pressed="true"] .n{color:rgba(255,255,255,.62)}
+  .seg:not(.hasslug) button[aria-pressed="true"]{background:var(--night)}
+  .seg:not(.hasslug) button[aria-pressed="true"]{box-shadow:none}
+  .slug{
+    position:absolute; z-index:1; top:0; left:0; width:0; height:0;
+    background:var(--night); border-radius:2px;
+    box-shadow:inset 0 -3px 0 var(--hivis);
+    transition:transform .26s cubic-bezier(.4,.01,.2,1),
+               width .26s cubic-bezier(.4,.01,.2,1),
+               height .26s cubic-bezier(.4,.01,.2,1);
+  }
+  @media (prefers-reduced-motion:reduce){ .slug{transition:none} }
+
+  /* Four segments in a row stop fitting around 560px, so the bar folds into
+     a 2x2 block. The slug is positioned in two dimensions, so it follows. */
+  @media (max-width:560px){
+    .selector{display:block}
+    .selector .label{display:block; margin-bottom:9px}
+    .seg{display:grid; grid-template-columns:1fr 1fr; width:100%}
+    .seg button{justify-content:center; padding:9px 10px 8px; font-size:15px}
+    .seg button + button{box-shadow:none}
+  }
+
+  .tablecard{position:relative; background:var(--white); border:1px solid var(--rule); border-top:2px solid var(--ink)}
+  .tablescroll{overflow-x:auto}
+  /* The table is wider than a phone. A fading edge says so without a
+     scrollbar having to appear; script adds .more only while there is
+     more to the right. */
+  .tablecard::after{
+    content:""; position:absolute; top:0; right:0; bottom:0; width:44px;
+    background:linear-gradient(to left, var(--white) 10%, rgba(255,255,255,0));
+    pointer-events:none; opacity:0; transition:opacity .2s ease;
+  }
+  .tablecard.more::after{opacity:1}
+  .swipe{
+    display:none; font-family:var(--ui); font-size:12px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 9px;
+  }
+  @media (max-width:860px){ .swipe{display:block} }
+  table{border-collapse:collapse; width:100%; min-width:880px; table-layout:fixed}
+  col.c-item{width:25%} col.c-when{width:23%} col.c-diff{width:20%}
+  col.c-rec{width:17%} col.c-cost{width:15%}
+  th,td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--rule); vertical-align:top}
+  thead th{
+    font-family:var(--ui); font-size:10.5px; font-weight:700; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--muted); padding-block:11px;
+    border-bottom:1px solid var(--ink); white-space:nowrap;
+  }
+  tbody tr.group td{
+    font-family:var(--disp); font-weight:700; font-size:16px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); background:var(--band);
+    padding-block:7px; border-bottom:1px solid var(--rule);
+  }
+  tbody tr:last-child td{border-bottom:0}
+  td.item{font-size:15.5px}
+  td.item a{color:var(--ink); font-weight:600; text-decoration:none; border-bottom:1px solid var(--rule)}
+  td.item a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+  td .note{display:block; font-family:var(--ui); color:var(--muted); font-size:13px; line-height:1.45; margin-top:3px; max-width:34ch}
+  td.when{font-family:var(--ui); font-size:14px; color:var(--muted)}
+  td.cost{font-family:var(--ui); font-size:14.5px; font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap}
+
+  .pips{display:inline-flex; gap:3px; vertical-align:middle; margin-right:9px}
+  .pips i{width:7px; height:15px; background:var(--rule); border-radius:1px}
+  .pips i.on{background:var(--accent)}
+  .dlabel{font-family:var(--ui); font-size:13px; color:var(--muted); white-space:nowrap}
+
+  /* Recommendation tags: square-cut with a colour bar, like a parts label */
+  .tag{
+    display:inline-flex; align-items:center; font-family:var(--disp); font-weight:600;
+    font-size:14px; letter-spacing:.09em; text-transform:uppercase; white-space:nowrap;
+    padding:4px 11px 3px; border-radius:2px; border-left:3px solid currentColor;
+  }
+  .tag.home{color:var(--home); background:var(--home-bg)}
+  .tag.either{color:var(--either); background:var(--either-bg)}
+  .tag.shop{color:var(--shop); background:var(--shop-bg)}
+
+  .footnote{font-family:var(--ui); font-size:13.5px; line-height:1.55; color:var(--muted); max-width:82ch; margin-top:14px}
+
+  /* Difficulty key */
+  .scale{display:grid; grid-template-columns:repeat(auto-fit,minmax(196px,1fr)); gap:14px; margin-top:28px}
+  .scale div{background:var(--white); border:1px solid var(--rule); border-top:3px solid var(--accent); padding:14px 16px}
+  .scale b{display:block; font-family:var(--disp); font-weight:700; font-size:17px; text-transform:uppercase; letter-spacing:.04em; margin:9px 0 3px}
+  .scale span.t{font-family:var(--ui); font-size:13.5px; line-height:1.5; color:var(--muted); display:block}
+
+  /* ---------- contents ---------- */
+  .toc{padding-block:clamp(42px,5vw,60px) 0}
+  .toc ol{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:2px 30px; padding:0; margin:0; list-style:none; counter-reset:s;
+    border-top:2px solid var(--ink); padding-top:18px;
+  }
+  .toc li{counter-increment:s}
+  .toc a{
+    font-family:var(--ui); font-size:15px; text-decoration:none; color:var(--ink);
+    display:inline-flex; gap:10px; padding-block:5px;
+  }
+  .toc a::before{
+    content:counter(s,decimal-leading-zero); color:var(--accent); font-weight:700;
+    font-size:12px; letter-spacing:.08em; padding-top:3px; font-variant-numeric:tabular-nums;
+  }
+  .toc a:hover{color:var(--accent)}
+
+  /* ---------- sections ---------- */
+  .topic{padding-top:clamp(46px,5.5vw,66px)}
+  .topic > h2{display:flex; gap:14px; align-items:baseline; margin-bottom:20px}
+  .topic > h2 .n{
+    font-family:var(--ui); font-size:13px; font-weight:700; letter-spacing:.14em;
+    color:var(--accent); flex:none;
+  }
+  .layout{display:grid; grid-template-columns:minmax(0,1fr) 304px; gap:34px; align-items:start}
+  @media (max-width:880px){ .layout{grid-template-columns:minmax(0,1fr); gap:24px} }
+  .prose p,.prose li{font-size:16.5px; line-height:1.62}
+  .prose p{margin:0 0 15px}
+  .prose ul,.prose ol{padding-left:1.25em; margin:0 0 17px}
+  .prose li{margin-bottom:7px}
+  .prose h3{
+    font-family:var(--disp); font-weight:700; text-transform:uppercase;
+    font-size:clamp(20px,2.3vw,25px); line-height:1.05; margin:30px 0 12px;
+  }
+
+  /* Job card — a spec plate: ink header bar, labels in the eyebrow voice */
+  .card{background:var(--white); border:1px solid var(--rule); border-radius:2px; overflow:hidden}
+  .card + .card{margin-top:16px}
+  .card h4{
+    background:var(--night); color:#fff; font-family:var(--disp); font-weight:700;
+    font-size:15px; letter-spacing:.14em; text-transform:uppercase;
+    padding:9px 16px 8px; display:flex; align-items:center; gap:9px;
+  }
+  .card h4::before{content:""; width:14px; height:3px; background:var(--hivis); flex:none}
+  .card dl{display:grid; grid-template-columns:auto minmax(0,1fr); gap:0; margin:0}
+  .card dt{
+    font-family:var(--ui); font-size:10.5px; font-weight:700; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); padding:10px 12px 10px 16px; white-space:nowrap;
+    border-bottom:1px solid var(--rule);
+  }
+  .card dd{
+    margin:0; font-family:var(--ui); font-size:14.5px; line-height:1.45;
+    padding:9px 16px 9px 0; border-bottom:1px solid var(--rule);
+  }
+  .card dt:last-of-type, .card dl dd:last-of-type{border-bottom:0}
+
+  /* Callout — hi-vis bar, matching the pull quotes on the story page */
+  .callout{
+    background:var(--band); border-left:4px solid var(--hivis);
+    padding:15px 20px; margin:22px 0; font-family:var(--ui); font-size:15px; line-height:1.55;
+  }
+  .callout p{margin:0}
+  .callout strong{color:var(--ink)}
+
+  .closing{background:var(--band); padding-block:clamp(40px,5vw,60px); margin-top:clamp(52px,6vw,78px)}
+  .closing h3{font-family:var(--disp); font-weight:700; text-transform:uppercase; font-size:clamp(22px,2.6vw,30px); line-height:1.05; margin-bottom:10px}
+  .closing p:not(.eyebrow){font-family:var(--ui); font-size:15px; color:var(--muted); max-width:56ch}
+  .closing .ytbtn{margin-top:20px}
+  .endnote{font-family:var(--ui); font-size:13.5px; color:var(--muted); max-width:78ch; padding-block:clamp(34px,4vw,46px)}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="inner">
+    <a class="wordmark" href="../index.html" aria-label="Second Kickstart"><img src="../img/logo-sk.png" alt="" class="logomark" width="253" height="96"><span class="wordtext">Second Kickstart</span></a>
+    <nav class="nav">
+      <a href="../index.html#prod">Reviews</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#tank-bag">Tank Bag</a>
+      <a href="../index.html#press">Press</a>
+      <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="wrap">
+  <header class="arthead">
+    <a class="crumb" href="../index.html#tank-bag">&larr; Tank Bag</a>
+    <p class="eyebrow">Explainer</p>
+    <h1>Motorcycle maintenance you can do at home</h1>
+    <p class="lede">What to do yourself, how often, how hard it is, and which jobs to hand to a shop. Written for modern bikes, fuel-injected and mostly chain-driven.</p>
+    <div class="rules">
+      <div><strong>The manual is the source of truth</strong><span>Every interval, fluid spec and torque value on your bike comes from the owner&rsquo;s manual. The figures on this page are typical, not yours.</span></div>
+      <div><strong>Buy a torque wrench first</strong><span>Stripped drain plugs and over-tightened axle nuts are the classic home-mechanic damage. Look up the spec, set the wrench.</span></div>
+      <div><strong>Keep a log</strong><span>Date, mileage and what you did. It makes the next job easier and adds value at resale.</span></div>
+    </div>
+  </header>
+</div>
+
+<section class="glance" aria-labelledby="summary-h">
+  <div class="wrap">
+    <div class="headrow"><h2 id="summary-h">Maintenance at a glance</h2></div>
+
+    <div class="selector">
+      <span class="label" id="filter-label">Show</span>
+      <div class="seg" role="group" aria-labelledby="filter-label">
+        <span class="slug" aria-hidden="true"></span>
+        <button type="button" data-f="all" aria-pressed="true">All jobs <span class="n"></span></button>
+        <button type="button" data-f="home" aria-pressed="false">Home <span class="n"></span></button>
+        <button type="button" data-f="either" aria-pressed="false">Depends <span class="n"></span></button>
+        <button type="button" data-f="shop" aria-pressed="false">Shop <span class="n"></span></button>
+      </div>
+    </div>
+
+    <p class="swipe">Swipe the table &rarr;</p>
+    <div class="tablecard">
+      <div class="tablescroll">
+        <table id="summary">
+          <colgroup><col class="c-item"><col class="c-when"><col class="c-diff"><col class="c-rec"><col class="c-cost"></colgroup>
+          <thead><tr><th>Maintenance item</th><th>Typical interval</th><th>Difficulty</th><th>Recommendation</th><th>Materials at home</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <p class="footnote">Intervals are common values for modern street and adventure bikes; your manual overrides them, and dusty or off-road riding shortens most of them. Costs are approximate US prices for consumables and parts per service, excluding one-time tool purchases. Shop-recommended jobs show the parts cost only; labor is extra.</p>
+
+    <div class="scale" aria-label="Difficulty scale">
+      <div><span class="pips" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span><b>1 &middot; Basic</b><span class="t">No special tools, no disassembly. A look, a gauge, a rag.</span></div>
+      <div><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><b>2 &middot; Easy</b><span class="t">Common hand tools and a torque wrench. Minor panel or part removal.</span></div>
+      <div><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><b>3 &middot; Moderate</b><span class="t">A job-specific tool such as a bleed kit, and a procedure where a mistake affects safety.</span></div>
+      <div><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><b>4 &middot; Advanced</b><span class="t">Specialized tools (chain riveter, fork tools, vacuum gauges) or major disassembly like tank and airbox removal.</span></div>
+      <div><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><b>5 &middot; Specialist</b><span class="t">Dealer tools, precision measurement or engine internals. Expensive if done wrong.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<nav class="toc" aria-label="Topics">
+  <ol>
+    <li><a href="#oil">Oil and filter</a></li>
+    <li><a href="#air">Air filter</a></li>
+    <li><a href="#fuel">Fuel and storage</a></li>
+    <li><a href="#chain">Chain</a></li>
+    <li><a href="#brakes">Brakes</a></li>
+    <li><a href="#cables">Cables and controls</a></li>
+    <li><a href="#plugs">Spark plugs</a></li>
+    <li><a href="#suspension">Suspension</a></li>
+    <li><a href="#cooling">Cooling, battery, tires</a></li>
+    <li><a href="#washing">Washing</a></li>
+    <li><a href="#shop">Leave it to a shop</a></li>
+    <li><a href="#kit">Starter kit</a></li>
+  </ol>
+</nav>
+
+<section class="topic" id="oil">
+  <h2><span class="n">01</span>Oil and filter</h2>
+  <div class="layout">
+    <div class="prose">
+      <p><strong>Viscosity.</strong> Numbers like 10W-40 describe how oil flows cold and hot. Use what the manual lists; 10W-40 and 10W-50 are common.</p>
+      <p><strong>Use motorcycle oil marked JASO MA or MA2.</strong> Most bikes share one oil supply between the engine, transmission and wet clutch. Automotive &ldquo;energy conserving&rdquo; oils carry friction modifiers that can make the clutch slip. The JASO MA/MA2 mark means the oil is safe for a wet clutch.</p>
+      <p><strong>Mineral or synthetic.</strong> Factory fills are often mineral or semi-synthetic. Synthetic holds up better to heat and time and costs more. Switching needs no flush or special procedure: drain, refill, done. The exception is break-in, where some manufacturers specify mineral oil for the first service.</p>
+      <h3>Procedure</h3>
+      <ol>
+        <li>Warm the engine for a few minutes so the oil flows, shut it off and let it sit briefly. Hot oil burns.</li>
+        <li>Stand the bike the way the manual says (sidestand or upright).</li>
+        <li>Remove the drain plug over a pan and let it empty. Some bikes, KTMs especially, have more than one drain plug or an oil screen to clean.</li>
+        <li>Replace the filter. Put a thin film of fresh oil on the new filter&rsquo;s rubber seal so it seats cleanly.</li>
+        <li>Refit the drain plug with a new crush washer and torque it to spec.</li>
+        <li>Fill slightly under the listed capacity, run the engine for a minute, shut off, wait, then check the level the way the manual describes and top up to the mark.</li>
+        <li>Take the used oil to an auto parts store; many recycle it for free.</li>
+      </ol>
+    </div>
+    <aside>
+      <div class="card"><h4>Job card</h4><dl>
+        <dt>Difficulty</dt><dd>2 &middot; Easy</dd>
+        <dt>Time</dt><dd>About 45 minutes</dd>
+        <dt>Interval</dt><dd>3,000&ndash;6,000 mi or yearly</dd>
+        <dt>Tools</dt><dd>Sockets, torque wrench, drain pan, funnel, filter wrench</dd>
+        <dt>Parts</dt><dd>JASO MA/MA2 oil, filter, crush washer</dd>
+      </dl></div>
+      <div class="callout"><p>The best first job. If you only ever do one thing on this page yourself, do this.</p></div>
+    </aside>
+  </div>
+</section>
+
+<section class="topic" id="air">
+  <h2><span class="n">02</span>Air filter</h2>
+  <div class="layout">
+    <div class="prose">
+      <p>An engine is an air pump, so the filter matters. There are three kinds:</p>
+      <ul>
+        <li><strong>Paper:</strong> replace it.</li>
+        <li><strong>Foam:</strong> common on dual-sports and dirt bikes. Wash in filter cleaner (never gasoline), rinse, dry completely, oil evenly with dedicated filter oil and squeeze out the excess.</li>
+        <li><strong>Oiled cotton gauze:</strong> clean and re-oil with the manufacturer&rsquo;s kit.</li>
+      </ul>
+      <p>If you ride dirt roads, ignore the schedule and check often. One dusty weekend can do more to a filter than a thousand miles of pavement.</p>
+      <p>Getting to the filter is the variable. On many dual-sports it sits under the seat, a few minutes&rsquo; work. On many road and adventure bikes it is under the tank, which turns a five-minute job into an hour. Stuff a clean rag in the intake while the filter is out so nothing falls into the engine. Many riders keep a pre-oiled spare foam filter in a zip-top bag for a five-minute trailside swap.</p>
+    </div>
+    <aside><div class="card"><h4>Job card</h4><dl>
+      <dt>Difficulty</dt><dd>2&ndash;3 &middot; depends on access</dd>
+      <dt>Time</dt><dd>20 minutes to an hour</dd>
+      <dt>Interval</dt><dd>Paper: replace 12,000&ndash;18,000 mi. Foam: clean every 500&ndash;1,000 mi off-road</dd>
+      <dt>Parts</dt><dd>Paper filter, or foam cleaner and filter oil</dd>
+    </dl></div></aside>
+  </div>
+</section>
+
+<section class="topic" id="fuel">
+  <h2><span class="n">03</span>Fuel, stabilizer and Sea Foam</h2>
+  <div class="layout">
+    <div class="prose">
+      <p><strong>Fuel filters.</strong> On most fuel-injected bikes the filter is inside the tank on the pump, with long intervals. It is rarely a routine job and not one to do at home. Older and carbureted bikes may have a visible inline filter that is easy to swap, roughly every 20,000 miles.</p>
+      <p><strong>Fuel stabilizer.</strong> Essential for storage of a month or more, especially with ethanol fuel, which breaks down into varnish.</p>
+      <ol>
+        <li>Fill the tank nearly full, leaving less air to oxidize the fuel.</li>
+        <li>Add stabilizer at the label&rsquo;s ratio.</li>
+        <li>Run the engine a few minutes so treated fuel reaches the injectors or carburetor.</li>
+      </ol>
+      <p><strong>Sea Foam.</strong> Helps dissolve varnish in carbureted engines: older bikes, small dirt bikes and two-strokes. On a modern fuel-injected bike, with its sealed, pressurized system, it adds little, and it does not replace stabilizer. Don&rsquo;t add it to the crankcase oil, which also runs the clutch.</p>
+    </div>
+    <aside><div class="card"><h4>Quick reference</h4><dl>
+      <dt>Stabilizer</dt><dd>Any storage over ~30 days</dd>
+      <dt>Sea Foam</dt><dd>Carbureted engines only</dd>
+      <dt>In-tank filter</dt><dd>Per manual; shop job</dd>
+    </dl></div></aside>
+  </div>
+</section>
+
+<section class="topic" id="chain">
+  <h2><span class="n">04</span>Chain</h2>
+  <div class="layout">
+    <div class="prose">
+      <p>The job you will do most. Modern O-ring and X-ring chains seal grease inside each roller, so use a cleaner labeled O-ring safe, or kerosene, with a brush. Never use harsh solvents or a gasoline rag. Scrub, wipe, then lube after a ride while the chain is warm.</p>
+      <p><strong>Slack.</strong> The manual gives a range, how the bike should stand, and where to measure. Too tight is worse than too loose: it hammers the output shaft bearing and rear wheel bearings. Adventure bikes with long suspension travel have a slack spec that looks loose. Trust the manual, not your eye.</p>
+      <h3>Adjusting slack</h3>
+      <ol>
+        <li>Roll the bike and check slack at several points. Chains wear unevenly; set it at the tightest spot.</li>
+        <li>Loosen the rear axle nut.</li>
+        <li>Turn both adjusters the same amount, using the swingarm alignment marks to keep the wheel straight.</li>
+        <li>Torque the axle nut to spec, then measure again. Tightening the axle can pull slack out of spec.</li>
+      </ol>
+      <div class="callout"><p>Kinks or tight spots that won&rsquo;t free up mean the chain is done. Replace it together with both sprockets.</p></div>
+    </div>
+    <aside><div class="card"><h4>Job card</h4><dl>
+      <dt>Difficulty</dt><dd>2 &middot; Easy (adjust)</dd>
+      <dt>Time</dt><dd>About 20 minutes</dd>
+      <dt>Interval</dt><dd>Lube every 300&ndash;600 mi and after rain or washing</dd>
+      <dt>Tools</dt><dd>Axle socket, torque wrench, ruler, three-sided brush</dd>
+      <dt>Watch for</dt><dd>A crooked wheel wears chain and sprockets fast</dd>
+    </dl></div></aside>
+  </div>
+</section>
+
+<section class="topic" id="brakes">
+  <h2><span class="n">05</span>Brakes</h2>
+  <div class="layout">
+    <div class="prose">
+      <p><strong>Pads.</strong> Most pads have a wear line or groove, and the manual gives a minimum thickness. Check with a flashlight every few weeks.</p>
+      <p><strong>Rotors.</strong> Rotor cleaner is for contamination (oil, chain lube, brake fluid), not routine washing. Don&rsquo;t touch rotors with bare fingers.</p>
+      <p><strong>Fluid.</strong> Most bikes use DOT 4, which absorbs moisture and causes corrosion, so the common interval is every two years whether you ride or not. The reservoir cap names the fluid. DOT 3, 4 and 5.1 are glycol-based; DOT 5 is silicone and must never be mixed with them. Glycol fluid strips paint.</p>
+      <h3>Replacing brake fluid</h3>
+      <ol>
+        <li>Cover painted surfaces. Open the reservoir and pull most of the old fluid out with a syringe. Never let it run dry.</li>
+        <li>Refill with fresh fluid from a sealed bottle.</li>
+        <li>At the caliper, run a clear hose from the bleeder into a catch bottle. Open the bleeder, squeeze the lever, close the bleeder before releasing.</li>
+        <li>Repeat, keeping the reservoir topped up, until the fluid runs clean and bubble-free. Do both front calipers, then the rear.</li>
+        <li>Before riding, the lever must feel firm and consistent. If it is spongy, bleed again or take it to a shop.</li>
+      </ol>
+      <p>Air compresses and fluid does not, so any bubble turns lever travel into squeezed air. Bubbles cling to high points and banjo fittings; tapping the lines helps, and some riders zip-tie the lever to the grip overnight to let small bubbles rise.</p>
+      <div class="callout"><p><strong>ABS bikes:</strong> a normal flush is fine. If air reaches the ABS unit because the reservoir ran dry, bleeding it may need a dealer tool.</p></div>
+    </div>
+    <aside><div class="card"><h4>Job card</h4><dl>
+      <dt>Difficulty</dt><dd>3 &middot; Moderate</dd>
+      <dt>Time</dt><dd>About an hour</dd>
+      <dt>Interval</dt><dd>Fluid every 2 years</dd>
+      <dt>Tools</dt><dd>Bleed kit, bleeder wrench, rags, syringe</dd>
+      <dt>Parts</dt><dd>Sealed bottle of the fluid on the cap</dd>
+    </dl></div></aside>
+  </div>
+</section>
+
+<section class="topic" id="cables">
+  <h2><span class="n">06</span>Cables and controls</h2>
+  <div class="prose">
+    <p>Throttle and clutch cables stretch. The manual gives a free play spec, the slack before the cable starts to pull, with an adjuster at the lever and often another lower down. Too little throttle free play can raise the idle when you turn the bars.</p>
+    <p>Older cables benefit from lubrication. Many modern cables are lined and should not be oiled, so check first. Hydraulic clutches use either brake fluid or mineral oil, printed on the reservoir cap, and the two never mix. Hydraulic clutch fluid follows the brake fluid interval and procedure.</p>
+  </div>
+</section>
+
+<section class="topic" id="plugs">
+  <h2><span class="n">07</span>Spark plugs</h2>
+  <div class="prose">
+    <p>Modern bikes mostly use iridium plugs with long intervals, often tens of thousands of miles. Change them when the schedule says.</p>
+    <p>Access decides whether this is a home job. On a single with exposed plugs it is easy. On many adventure twins, reaching the plugs means removing the tank or airbox, which moves it toward the shop list. Iridium plugs are usually gapped correctly out of the box; never regap one by prying on the fine center electrode.</p>
+  </div>
+</section>
+
+<section class="topic" id="suspension">
+  <h2><span class="n">08</span>Suspension</h2>
+  <div class="layout">
+    <div class="prose">
+      <p><strong>At home:</strong> wipe the fork tubes clean after dirty rides (microfiber leaves no lint), watch for weeping seals, clear grit from under the seal with a seal cleaning tool, set sag, and use the clickers.</p>
+      <p><strong>Fork oil</strong> degrades and has a service interval, far shorter on dirt bikes. Conventional damper-rod forks are home-serviceable with patience. Cartridge forks and nitrogen-charged rear shocks go to a suspension shop. Nothing in suspension gets &ldquo;topped off.&rdquo;</p>
+    </div>
+    <aside><div class="card"><h4>Quick reference</h4><dl>
+      <dt>Wipe tubes</dt><dd>After dirty rides</dd>
+      <dt>Fork oil</dt><dd>Street: 15,000&ndash;20,000 mi or 2 years. Dirt: much sooner</dd>
+      <dt>Rebuilds</dt><dd>Suspension shop</dd>
+    </dl></div></aside>
+  </div>
+</section>
+
+<section class="topic" id="cooling">
+  <h2><span class="n">09</span>Cooling, battery and tires</h2>
+  <div class="layout">
+    <div class="prose">
+      <h3>Coolant</h3>
+      <p>Check the overflow tank with the engine cold; the level should sit between the marks. Top up with the same premixed coolant already in the system, and use the type the manual specifies. Motorcycle engines are full of aluminum, and not every car coolant suits them. Never open the radiator cap on a hot engine.</p>
+      <p>Coolant&rsquo;s corrosion inhibitors wear out, so it has a replacement interval, often every two to four years. Replacing it means draining, refilling and bleeding out air, because an air pocket creates a hot spot. Wipe up spills; coolant tastes sweet to pets.</p>
+      <div class="callout"><p>Repeated top-ups are a symptom, not maintenance: look for a leaking hose, a weeping water pump or a damaged radiator. Rusty or brown coolant, or a milky film in the oil, needs inspection before you ride further.</p></div>
+      <h3>Battery</h3>
+      <p>Keep the battery on a tender during storage. A lithium battery needs a tender with a lithium mode.</p>
+      <h3>Tires</h3>
+      <p>Check pressure cold, weekly. It costs nothing and is one of the most important safety checks. Tubeless motorcycle tires are built like car tires and don&rsquo;t need liquid sealant.</p>
+    </div>
+    <aside><div class="card"><h4>Job card &middot; Coolant</h4><dl>
+      <dt>Top-up</dt><dd>1 &middot; Basic, 5 minutes</dd>
+      <dt>Replace</dt><dd>3 &middot; Moderate, about an hour</dd>
+      <dt>Interval</dt><dd>Every 2&ndash;4 years</dd>
+      <dt>Replace early</dt><dd>After overheating, radiator damage or the wrong coolant type</dd>
+    </dl></div></aside>
+  </div>
+</section>
+
+<section class="topic" id="washing">
+  <h2><span class="n">10</span>Washing</h2>
+  <div class="prose">
+    <p>A garden hose is fine. A pressure washer is fine only at a distance, and never aimed at:</p>
+    <ul>
+      <li>Bearings: wheel, steering head, swingarm pivot, linkage</li>
+      <li>Fork and shock seals</li>
+      <li>Electrical connectors and the instrument cluster</li>
+      <li>Radiator fins, which crush easily</li>
+    </ul>
+    <p>Let the engine cool first. Cover the exhaust outlet (a plastic bag and rubber band, or a rubber exhaust plug) and the air intake. On many adventure bikes the intake is under the seat or tank and simply not spraying there is enough; dirt bikes with an exposed airbox can use a wash cover in place of the filter. Afterward, dry with towels, ride briefly to drive out water, and lube the chain.</p>
+    <div class="callout"><p>Remove every cover before starting the engine. A bag left in an exhaust melts, and one over the intake starves the engine. Hang your key on the exhaust plug.</p></div>
+  </div>
+</section>
+
+<section class="topic" id="shop">
+  <h2><span class="n">11</span>Leave it to a shop</h2>
+  <div class="prose">
+    <p>A mistake on these jobs can be very expensive, and an experienced, insured shop is the better bet:</p>
+    <ul>
+      <li><strong>Valve clearance on most modern twins.</strong> Shims under the cam followers mean removing the camshafts and getting cam timing right on reassembly. Exception: simple singles with screw-and-locknut adjusters, like the DR650, are a common home job.</li>
+      <li><strong>Timing belts</strong>, for example on Ducatis.</li>
+      <li><strong>Cam chain tensioners.</strong></li>
+      <li><strong>Engine internals:</strong> pistons, rings, cam timing.</li>
+      <li><strong>Throttle body sync</strong>, which needs vacuum gauges and experience.</li>
+      <li><strong>Fork cartridge and shock rebuilds.</strong></li>
+      <li><strong>Electronics.</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section class="topic" id="kit">
+  <h2><span class="n">12</span>Starter kit</h2>
+  <div class="layout">
+    <div class="prose">
+      <h3>One-time tools</h3>
+      <ul>
+        <li>Click-type torque wrench, 3/8 in (buy this first)</li>
+        <li>Socket set, drain pan, funnel, oil filter wrench</li>
+        <li>Tire pressure gauge</li>
+        <li>Battery tender with lithium mode</li>
+        <li>Brake bleed kit and syringe</li>
+        <li>Three-sided chain brush</li>
+        <li>Fork seal cleaning tool</li>
+      </ul>
+      <h3>Consumables to keep on the shelf</h3>
+      <ul>
+        <li>JASO MA/MA2 motorcycle oil, filters, assorted crush washers</li>
+        <li>O-ring-safe chain cleaner and chain lube</li>
+        <li>Sealed bottle of the brake fluid your cap specifies</li>
+        <li>Fuel stabilizer; Sea Foam if you have a carbureted engine</li>
+        <li>Foam filter cleaner and filter oil, if your bike uses foam</li>
+        <li>Rotor cleaner, microfiber towels, nitrile gloves</li>
+      </ul>
+    </div>
+    <aside><div class="card"><h4>Where specs live</h4><dl>
+      <dt>Intervals</dt><dd>Manual, maintenance schedule table</dd>
+      <dt>Fluids</dt><dd>Manual; brake and clutch reservoir caps</dd>
+      <dt>Torque</dt><dd>Manual or service manual</dd>
+      <dt>Tip</dt><dd>Download the manual PDF and build a spreadsheet of intervals and specs, with calendar reminders</dd>
+    </dl></div></aside>
+  </div>
+</section>
+
+<p class="endnote">General guidance for modern motorcycles. Always follow your owner&rsquo;s manual and service manual. Prices are approximate US figures and will vary by bike and retailer.</p>
+
+</div>
+
+<!-- VIDEO LINK: points at the channel until the maintenance video publishes -->
+<section class="closing">
+  <div class="wrap">
+    <p class="eyebrow">On the channel</p>
+    <h3>Motorcycle maintenance you should do at home</h3>
+    <p>The video version, with the jobs on a bench instead of a page &mdash; and what a shop&rsquo;s tools buy you that yours don&rsquo;t.</p>
+    <a class="ytbtn" href="https://www.youtube.com/@secondkickstart" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Watch on YouTube</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="inner">
+    <img src="../img/logo-wordmark.png" alt="Second Kickstart" class="footmark" width="560" height="141">
+    <div class="footrow">
+    <span>&copy; <span id="yr">2026</span> Second Kickstart</span>
+    <span><a href="https://www.youtube.com/@secondkickstart" rel="noopener">youtube.com/@secondkickstart</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // [item, link, note, interval, [difficulty min,max], recommendation, cost]
+  var rows = [
+    ["Routine checks"],
+    ["Tire pressure", "cooling", "", "Weekly, cold, and before long rides", [1,1], "home", "$0"],
+    ["Coolant level", "cooling", "", "Monthly, engine cold", [1,1], "home", "$0–10"],
+    ["Brake pad wear", "brakes", "", "Every few weeks or ~1,000 mi", [1,1], "home", "$0"],
+    ["Throttle and clutch cable free play", "cables", "", "Every 4,000–6,000 mi", [2,2], "home", "$0"],
+    ["Fork tubes and seals", "suspension", "Wipe clean, check for weeping", "After dirty rides", [1,1], "home", "$0"],
+    ["Chain"],
+    ["Chain clean and lube", "chain", "", "Every 300–600 mi; after rain or washing", [1,1], "home", "$3–5"],
+    ["Chain slack adjustment", "chain", "", "Check every 500 mi; adjust as needed", [2,2], "home", "$0"],
+    ["Chain and sprockets", "chain", "Needs a chain breaker and riveter", "15,000–25,000 mi, or at kinks and hooked teeth", [4,4], "either", "$150–300"],
+    ["Engine"],
+    ["Oil and filter", "oil", "", "3,000–6,000 mi or yearly", [2,2], "home", "$45–80"],
+    ["Air filter, paper", "air", "Harder when it sits under the tank", "Inspect 6,000 mi; replace 12,000–18,000 mi", [2,3], "home", "$20–45"],
+    ["Air filter, foam", "air", "", "Clean every 500–1,000 mi off-road", [2,2], "home", "$2–5"],
+    ["Spark plugs, iridium", "plugs", "Easy on singles; tank or airbox removal on many twins", "15,000–30,000 mi", [2,4], "either", "$25–60"],
+    ["Coolant replacement", "cooling", "", "Every 2–4 years", [3,3], "home", "$20–35"],
+    ["Valve clearance, screw and locknut", "shop", "Simple singles such as the DR650", "Every 4,000–8,000 mi", [3,3], "home", "$5–20"],
+    ["Valve clearance, shim under bucket", "shop", "Most modern twins; cams come out", "15,000–26,000 mi", [5,5], "shop", "$40–80"],
+    ["Throttle body sync", "shop", "Needs vacuum gauges", "8,000–16,000 mi", [4,4], "shop", "$0"],
+    ["Timing belts (e.g. Ducati)", "shop", "", "2–5 years or 15,000–30,000 mi", [5,5], "shop", "$80–150"],
+    ["Cam chain tensioner", "shop", "", "When noisy, or per manual", [5,5], "shop", "$50–150"],
+    ["Brakes and hydraulics"],
+    ["Brake fluid flush", "brakes", "Keep the reservoir full on ABS bikes", "Every 2 years", [3,3], "home", "$10–15"],
+    ["Brake pad replacement", "brakes", "", "10,000–20,000 mi, at the wear line", [3,3], "home", "$30–60 per axle"],
+    ["Hydraulic clutch fluid", "cables", "Brake fluid or mineral oil, per the cap", "Every 2 years", [3,3], "home", "$10–15"],
+    ["Fuel and storage"],
+    ["Fuel stabilizer", "fuel", "", "Any storage over ~30 days", [1,1], "home", "$3–5"],
+    ["Sea Foam", "fuel", "Carbureted engines only", "Before storage, or when running rough", [1,1], "home", "$3–6"],
+    ["Battery tender", "cooling", "Lithium mode for lithium batteries", "During storage", [1,1], "home", "$0"],
+    ["Fuel filter, in-tank", "fuel", "Inline filters on older bikes are an easy home job", "20,000+ mi, per manual", [4,4], "shop", "$20–60"],
+    ["Suspension"],
+    ["Sag and clicker setup", "suspension", "", "Once, and when load changes", [2,2], "home", "$0"],
+    ["Fork oil change", "suspension", "Damper-rod forks at home; cartridge forks to a shop", "15,000–20,000 mi or 2 years; dirt much sooner", [4,5], "either", "$20–40"],
+    ["Fork cartridge and shock rebuild", "suspension", "", "20,000–30,000 mi, or when damping fades", [5,5], "shop", "$60–150"],
+    ["Care"],
+    ["Washing", "washing", "Keep pressure washers off bearings, seals and fins", "Every few weeks; after dirty rides", [1,1], "home", "$2–5"],
+    ["Maintenance log", "kit", "", "Every job", [1,1], "home", "$0"]
+  ];
+  var names = ["", "Basic", "Easy", "Moderate", "Advanced", "Specialist"];
+  var recs = { home: "Home", either: "Depends on bike", shop: "Shop" };
+  var tb = document.querySelector("#summary tbody");
+  var html = "", group = "", counts = { all: 0, home: 0, either: 0, shop: 0 };
+
+  rows.forEach(function (r) {
+    if (r.length === 1) { group = r[0]; html += '<tr class="group" data-group="' + group + '"><td colspan="5">' + group + "</td></tr>"; return; }
+    var d = r[4], pips = "";
+    for (var i = 1; i <= 5; i++) pips += '<i class="' + (i <= d[1] ? "on" : "") + '"></i>';
+    var dl = d[0] === d[1] ? d[0] + " · " + names[d[0]] : d[0] + "–" + d[1] + " · " + names[d[0]] + " to " + names[d[1]].toLowerCase();
+    counts.all++; counts[r[5]]++;
+    html += '<tr data-rec="' + r[5] + '" data-group="' + group + '">' +
+      '<td class="item"><a href="#' + r[1] + '">' + r[0] + "</a>" + (r[2] ? '<span class="note">' + r[2] + "</span>" : "") + "</td>" +
+      '<td class="when">' + r[3] + "</td>" +
+      '<td><span class="pips" aria-hidden="true">' + pips + '</span><span class="dlabel">' + dl + "</span></td>" +
+      '<td><span class="tag ' + r[5] + '">' + recs[r[5]] + "</span></td>" +
+      '<td class="cost">' + r[6] + "</td></tr>";
+  });
+  tb.innerHTML = html;
+
+  var seg = document.querySelector(".seg");
+  var slug = seg.querySelector(".slug");
+  var buttons = Array.prototype.slice.call(seg.querySelectorAll("button"));
+
+  buttons.forEach(function (b) { b.querySelector(".n").textContent = counts[b.dataset.f]; });
+
+  function moveSlug() {
+    var on = seg.querySelector('button[aria-pressed="true"]');
+    if (!on) return;
+    slug.style.width = on.offsetWidth + "px";
+    slug.style.height = on.offsetHeight + "px";
+    slug.style.transform = "translate(" + on.offsetLeft + "px," + on.offsetTop + "px)";
+  }
+
+  function apply(f) {
+    buttons.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.f === f ? "true" : "false"); });
+    var visible = {};
+    tb.querySelectorAll("tr:not(.group)").forEach(function (tr) {
+      var show = f === "all" || tr.dataset.rec === f;
+      tr.hidden = !show;
+      if (show) visible[tr.dataset.group] = true;
+    });
+    tb.querySelectorAll("tr.group").forEach(function (tr) { tr.hidden = !visible[tr.dataset.group]; });
+    moveSlug();
+  }
+
+  buttons.forEach(function (b) { b.addEventListener("click", function () { apply(b.dataset.f); }); });
+
+  // The slug only takes over once it can be measured, so a no-JS or
+  // pre-font-load state still shows the pressed segment via its own fill.
+  function init() { seg.classList.add("hasslug"); moveSlug(); }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(init); } else { init(); }
+  window.addEventListener("resize", moveSlug);
+
+  // Fading right edge while the table has more to show
+  var card = document.querySelector(".tablecard");
+  var scroller = card.querySelector(".tablescroll");
+  function edge() {
+    var more = scroller.scrollWidth - scroller.clientWidth - scroller.scrollLeft > 2;
+    card.classList.toggle("more", more);
+  }
+  scroller.addEventListener("scroll", edge);
+  window.addEventListener("resize", edge);
+  edge();
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
